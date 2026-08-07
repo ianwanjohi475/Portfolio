@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { SunIcon, MoonIcon } from './icons.jsx';
 
-/** Light/dark switch. Persists to localStorage; the initial class is set
- *  pre-paint by the inline script in index.html. */
-export default function ThemeToggle() {
+/** Reflects the current theme (Sun in dark, Moon in light). Watches the
+ *  `dark` class on <html> so it stays in sync no matter who toggles it. */
+export function ThemeGlyph() {
   const [dark, setDark] = useState(
     typeof document !== 'undefined'
       ? document.documentElement.classList.contains('dark')
@@ -11,23 +11,29 @@ export default function ThemeToggle() {
   );
 
   useEffect(() => {
+    const el = document.documentElement;
+    const obs = new MutationObserver(() => setDark(el.classList.contains('dark')));
+    obs.observe(el, { attributes: true, attributeFilter: ['class'] });
+    return () => obs.disconnect();
+  }, []);
+
+  return dark ? <SunIcon /> : <MoonIcon />;
+}
+
+/** Standalone toggle button (used where a self-contained control is handy). */
+export default function ThemeToggle() {
+  const toggle = () => {
     const root = document.documentElement;
-    root.classList.toggle('dark', dark);
+    const dark = root.classList.toggle('dark');
     try {
       localStorage.setItem('theme', dark ? 'dark' : 'light');
     } catch (e) {
       /* ignore */
     }
-  }, [dark]);
-
+  };
   return (
-    <button
-      onClick={() => setDark((d) => !d)}
-      className="icon-btn"
-      aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
-      title={dark ? 'Light mode' : 'Dark mode'}
-    >
-      {dark ? <SunIcon /> : <MoonIcon />}
+    <button onClick={toggle} className="icon-btn" aria-label="Toggle theme" data-cursor>
+      <ThemeGlyph />
     </button>
   );
 }

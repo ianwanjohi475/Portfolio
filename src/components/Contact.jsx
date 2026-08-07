@@ -1,7 +1,7 @@
 import Reveal from './Reveal.jsx';
 import Socials from './Socials.jsx';
 import { site, waLink } from '../data/site.js';
-import { WhatsAppIcon, DownloadIcon } from './icons.jsx';
+import { WhatsAppIcon } from './icons.jsx';
 
 export default function Contact() {
   return (
@@ -33,9 +33,6 @@ export default function Contact() {
                 </a>
                 <a href={`mailto:${site.email}`} className="btn-ghost">
                   ✉ {site.email}
-                </a>
-                <a href={site.resume} download className="btn-ghost">
-                  <DownloadIcon /> Download CV
                 </a>
               </div>
 
