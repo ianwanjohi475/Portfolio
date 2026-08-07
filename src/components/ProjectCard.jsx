@@ -3,28 +3,36 @@ import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import Placeholder from './Placeholder.jsx';
 
-/** Project card with a cursor-tracked 3D tilt (disabled for reduced-motion). */
-export default function ProjectCard({ project }) {
+const initials = (title) =>
+  title
+    .split(' ')
+    .map((w) => w[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase();
+
+/** Premium project card with a subtle cursor tilt and a wide featured variant. */
+export default function ProjectCard({ project, wide = false }) {
   const ref = useRef(null);
 
   const handleMove = (e) => {
     const el = ref.current;
     if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const px = (e.clientX - rect.left) / rect.width - 0.5;
-    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    const r = el.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5;
+    const py = (e.clientY - r.top) / r.height - 0.5;
     gsap.to(el, {
-      rotateY: px * 10,
-      rotateX: -py * 10,
-      transformPerspective: 900,
+      rotateY: px * 5,
+      rotateX: -py * 5,
+      transformPerspective: 1200,
       duration: 0.5,
       ease: 'power2.out',
     });
   };
-
-  const handleLeave = () => {
+  const handleLeave = () =>
     gsap.to(ref.current, { rotateX: 0, rotateY: 0, duration: 0.7, ease: 'power3.out' });
-  };
+
+  const link = project.live || project.repo || '#';
 
   return (
     <motion.article
@@ -33,62 +41,66 @@ export default function ProjectCard({ project }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      className="group [transform-style:preserve-3d]"
+      className={wide ? 'lg:col-span-2' : ''}
     >
-      <div
+      <a
         ref={ref}
+        href={link}
+        target={link.startsWith('http') ? '_blank' : undefined}
+        rel={link.startsWith('http') ? 'noreferrer noopener' : undefined}
         onMouseMove={handleMove}
         onMouseLeave={handleLeave}
-        className="overflow-hidden rounded-2xl glass transition-shadow duration-300 hover:shadow-2xl hover:shadow-teal-500/20"
+        className={`card group block h-full [transform-style:preserve-3d] ${
+          wide ? 'lg:flex lg:items-stretch' : ''
+        }`}
       >
-        <div className="relative overflow-hidden">
-          <Placeholder seed={project.image} label={project.category} />
-          <div className="absolute inset-0 flex items-end bg-gradient-to-t from-ink/80 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-            <div className="flex flex-wrap gap-2 p-4">
-              {project.tags.map((t) => (
-                <span
-                  key={t}
-                  className="rounded-full bg-white/10 px-2.5 py-1 text-[11px] text-white/90"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
+        {/* Banner */}
+        <div className={`relative overflow-hidden ${wide ? 'lg:w-[52%]' : ''}`}>
+          <Placeholder
+            seed={project.image}
+            label=""
+            ratio={wide ? '16 / 10' : '16 / 10'}
+          />
+          <div className="absolute inset-0 grid-tex opacity-30 mix-blend-overlay" />
+          {/* monogram */}
+          <div className="absolute left-4 top-4 mono-tile h-11 w-11 text-sm shadow-lg">
+            {initials(project.title)}
           </div>
+          <span className="absolute right-4 top-4 rounded-full bg-ink/70 px-3 py-1 text-[11px] font-medium text-white/80 backdrop-blur">
+            {project.category}
+          </span>
         </div>
 
-        <div className="p-5">
-          <div className="flex items-center justify-between gap-3">
-            <h3 className="font-display text-lg font-semibold">{project.title}</h3>
-            <span className="text-[11px] uppercase tracking-widest text-teal-bright">
-              {project.category}
+        {/* Body */}
+        <div className={`flex flex-col p-6 ${wide ? 'lg:w-[48%] lg:justify-center lg:p-8' : ''}`}>
+          <div className="flex items-center gap-3 text-xs text-white/40">
+            <span className="font-mono">{project.year}</span>
+            <span className="h-px flex-1 bg-white/10" />
+          </div>
+
+          <div className="mt-3 flex items-start justify-between gap-3">
+            <h3 className={`font-display leading-tight ${wide ? 'text-2xl sm:text-3xl' : 'text-xl'}`}>
+              {project.title}
+            </h3>
+            <span
+              aria-hidden="true"
+              className="mt-1 grid h-8 w-8 shrink-0 place-items-center rounded-full border border-white/15 text-white/70 transition-all duration-300 group-hover:border-teal-bright group-hover:bg-teal-bright group-hover:text-teal-ink"
+            >
+              ↗
             </span>
           </div>
-          <p className="mt-2 text-sm text-white/60">{project.description}</p>
-          <div className="mt-4 flex gap-4 text-sm">
-            {project.live && (
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="text-white/80 underline-offset-4 transition hover:text-white hover:underline"
-              >
-                Live ↗
-              </a>
-            )}
-            {project.repo && (
-              <a
-                href={project.repo}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="text-white/60 underline-offset-4 transition hover:text-white hover:underline"
-              >
-                Code ↗
-              </a>
-            )}
+
+          <p className="mt-3 text-sm text-white/60">{project.description}</p>
+
+          <div className="mt-5 flex flex-wrap gap-2">
+            {project.tags.map((t) => (
+              <span key={t} className="chip">
+                {t}
+              </span>
+            ))}
           </div>
         </div>
-      </div>
+      </a>
     </motion.article>
   );
 }

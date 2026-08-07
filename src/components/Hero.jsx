@@ -35,22 +35,11 @@ export default function Hero() {
       ref={root}
       className="relative flex min-h-[100svh] items-center overflow-hidden pt-28"
     >
-      {/* Soft blurred teal gradient backdrop (cheap, GPU-light) */}
+      {/* Hero-specific animated teal glows (the shared grid lives behind everything) */}
       <div className="absolute inset-0 -z-10" aria-hidden="true">
-        <div className="absolute inset-0 bg-ink" />
-        <div className="absolute left-1/2 top-1/3 h-[70vh] w-[70vh] -translate-x-1/2 rounded-full bg-teal-600/40 blur-[120px] animate-blob" />
-        <div className="absolute right-[8%] top-[12%] h-[42vh] w-[42vh] rounded-full bg-teal-bright/20 blur-[110px] animate-blob" />
-        <div className="absolute bottom-[6%] left-[6%] h-[40vh] w-[40vh] rounded-full bg-teal-500/25 blur-[110px] animate-blob" />
-        {/* fine grid texture */}
-        <div
-          className="absolute inset-0 opacity-[0.06]"
-          style={{
-            backgroundImage:
-              'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
-            backgroundSize: '46px 46px',
-          }}
-        />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-ink" />
+        <div className="absolute left-1/2 top-1/3 h-[70vh] w-[70vh] -translate-x-1/2 rounded-full bg-teal-600/30 blur-[120px] animate-blob" />
+        <div className="absolute right-[8%] top-[12%] h-[42vh] w-[42vh] rounded-full bg-teal-bright/15 blur-[110px] animate-blob" />
+        <div className="absolute bottom-[6%] left-[6%] h-[40vh] w-[40vh] rounded-full bg-teal-500/20 blur-[110px] animate-blob" />
       </div>
 
       <div className="container-x w-full text-center">

@@ -1,4 +1,5 @@
 import { useLenis } from './hooks/useLenis.js';
+import GridBackground from './components/GridBackground.jsx';
 import Navbar from './components/Navbar.jsx';
 import ScrollProgress from './components/ScrollProgress.jsx';
 import Hero from './components/Hero.jsx';
@@ -19,6 +20,7 @@ export default function App() {
 
   return (
     <>
+      <GridBackground />
       <ScrollProgress />
       <Navbar />
       <main>
