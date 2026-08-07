@@ -66,16 +66,16 @@ export default function ProjectCard({ project, wide = false }) {
           <div className="absolute left-4 top-4 mono-tile h-11 w-11 text-sm shadow-lg">
             {initials(project.title)}
           </div>
-          <span className="absolute right-4 top-4 rounded-full bg-ink/70 px-3 py-1 text-[11px] font-medium text-white/80 backdrop-blur">
+          <span className="absolute right-4 top-4 rounded-full bg-black/50 px-3 py-1 text-[11px] font-medium text-white/90 backdrop-blur">
             {project.category}
           </span>
         </div>
 
         {/* Body */}
         <div className={`flex flex-col p-6 ${wide ? 'lg:w-[48%] lg:justify-center lg:p-8' : ''}`}>
-          <div className="flex items-center gap-3 text-xs text-white/40">
+          <div className="flex items-center gap-3 text-xs text-muted">
             <span className="font-mono">{project.year}</span>
-            <span className="h-px flex-1 bg-white/10" />
+            <span className="h-px flex-1 bg-border" />
           </div>
 
           <div className="mt-3 flex items-start justify-between gap-3">
@@ -84,13 +84,13 @@ export default function ProjectCard({ project, wide = false }) {
             </h3>
             <span
               aria-hidden="true"
-              className="mt-1 grid h-8 w-8 shrink-0 place-items-center rounded-full border border-white/15 text-white/70 transition-all duration-300 group-hover:border-teal-bright group-hover:bg-teal-bright group-hover:text-teal-ink"
+              className="mt-1 grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border text-fg/70 transition-all duration-300 group-hover:border-teal-bright group-hover:bg-teal-bright group-hover:text-teal-ink"
             >
               ↗
             </span>
           </div>
 
-          <p className="mt-3 text-sm text-white/60">{project.description}</p>
+          <p className="mt-3 text-sm text-muted">{project.description}</p>
 
           <div className="mt-5 flex flex-wrap gap-2">
             {project.tags.map((t) => (

@@ -1,22 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        // Deep, near-black teal-tinted background stack
-        ink: '#07100f',
-        surface: '#0b1614',
-        panel: '#0f1d1a',
-        line: '#1c302c',
-        // Teal brand system — bright signature + supporting shades
+        // Semantic tokens driven by CSS vars — flip per theme (see index.css)
+        bg: 'rgb(var(--bg) / <alpha-value>)',
+        fg: 'rgb(var(--fg) / <alpha-value>)',
+        muted: 'rgb(var(--muted) / <alpha-value>)',
+        card: 'rgb(var(--card) / <alpha-value>)',
+        border: 'rgb(var(--border) / <alpha-value>)',
+        // Teal brand system (works on both themes)
         teal: {
-          bright: '#2ff3d0', // the signature "pop" color (like Handshake's lime)
+          bright: '#14d6b8',
           400: '#2dd4bf',
           500: '#14b8a6',
           600: '#0d9488',
           700: '#0f766e',
-          ink: '#04231e', // dark text placed on bright teal
+          ink: '#04231e',
         },
       },
       fontFamily: {
@@ -26,10 +28,6 @@ export default {
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       keyframes: {
-        marquee: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(-50%)' },
-        },
         floaty: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
@@ -41,7 +39,6 @@ export default {
         },
       },
       animation: {
-        marquee: 'marquee 26s linear infinite',
         floaty: 'floaty 6s ease-in-out infinite',
         blob: 'blob 18s ease-in-out infinite',
       },
