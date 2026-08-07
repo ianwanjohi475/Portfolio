@@ -19,14 +19,47 @@ smooth scrolling. Fully responsive, accessible, and performance-minded
 > production-proven set that installs and builds cleanly today. The architecture
 > is identical — bump the versions in `package.json` when you're ready.
 
-## Getting started
+## Run it locally
+
+You need **Node.js 18+** installed ([nodejs.org](https://nodejs.org)). Then:
 
 ```bash
-npm install
-npm run dev      # start the dev server
-npm run build    # production build → dist/
-npm run preview  # preview the production build
+npm install      # install dependencies (first time only)
+npm run dev      # start the dev server → http://localhost:5173
 ```
+
+Open the printed URL in your browser; edits hot-reload instantly. Other commands:
+
+```bash
+npm run build    # production build → dist/
+npm run preview  # serve the production build locally to test it
+```
+
+## Deploy to Safaricom (cPanel) shared hosting
+
+Safaricom web hosting serves **static files** — it does not run a Node server,
+and it doesn't need to: this site compiles to plain HTML/CSS/JS.
+
+1. Build it locally: `npm run build`. This produces a `dist/` folder.
+2. Log in to your Safaricom **cPanel → File Manager**.
+3. Open `public_html` (for your main domain) — or a subfolder / the addon
+   domain's folder if the site lives elsewhere.
+4. Upload the **contents of `dist/`** (not the `dist` folder itself) — the
+   `index.html`, the `assets/` folder, and the hidden `.htaccess`.
+   - In File Manager, enable **Settings → Show Hidden Files (dotfiles)** so you
+     can see and upload `.htaccess`.
+   - Tip: zip the contents of `dist/`, upload the zip, then **Extract** it in
+     cPanel — much faster than uploading files one by one.
+5. Visit your domain. Done.
+
+The build uses **relative asset paths** (`base: './'`), so it works at the
+domain root *or* in a subfolder without any changes. The bundled `.htaccess`
+turns on gzip compression and long-term caching for a better Lighthouse score.
+
+> **Which React?** The server never runs React — it just serves the compiled
+> files — so the React version has no effect on hosting. This project uses the
+> current stable **React 18**, which is the safest, best-supported choice with
+> the 3D/animation stack.
 
 ## Project structure
 
