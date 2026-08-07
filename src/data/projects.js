@@ -9,11 +9,12 @@ export const categories = ['All', 'Websites', 'Apps', 'Games'];
 export const projects = [
   {
     id: 'aurora-commerce',
+    year: '2024',
     title: 'Aurora Commerce',
     category: 'Websites',
     description:
-      'A headless storefront with a scroll-driven 3D product configurator and sub-second navigation.',
-    tags: ['React', 'Three.js', 'GSAP', 'Node'],
+      'A headless storefront with a scroll-driven product configurator and sub-second navigation.',
+    tags: ['React', 'GSAP', 'Node', 'Stripe'],
     image: 'aurora',
     live: 'https://example.com/aurora',
     repo: 'https://github.com/ianwanjohi475',
@@ -21,11 +22,12 @@ export const projects = [
   },
   {
     id: 'pulse-analytics',
+    year: '2024',
     title: 'Pulse Analytics',
     category: 'Websites',
     description:
-      'Real-time analytics dashboard visualising millions of events with buttery WebGL charts.',
-    tags: ['React', 'D3', 'WebGL', 'TypeScript'],
+      'Real-time analytics dashboard visualising millions of events with buttery canvas charts.',
+    tags: ['React', 'D3', 'Canvas', 'TypeScript'],
     image: 'pulse',
     live: 'https://example.com/pulse',
     repo: 'https://github.com/ianwanjohi475',
@@ -33,6 +35,7 @@ export const projects = [
   },
   {
     id: 'nomad-app',
+    year: '2023',
     title: 'Nomad Travel',
     category: 'Apps',
     description:
@@ -45,6 +48,7 @@ export const projects = [
   },
   {
     id: 'mindful-app',
+    year: '2023',
     title: 'Mindful',
     category: 'Apps',
     description:
@@ -57,11 +61,12 @@ export const projects = [
   },
   {
     id: 'orbit-runner',
+    year: '2022',
     title: 'Orbit Runner',
     category: 'Games',
     description:
       'A browser endless-runner set in orbit, built on a custom ECS with 60fps physics.',
-    tags: ['Three.js', 'Cannon', 'WebGL'],
+    tags: ['Canvas', 'Web Audio', 'Web Workers'],
     image: 'orbit',
     live: 'https://example.com/orbit',
     repo: 'https://github.com/ianwanjohi475',
@@ -69,6 +74,7 @@ export const projects = [
   },
   {
     id: 'pixel-forge',
+    year: '2022',
     title: 'Pixel Forge',
     category: 'Games',
     description:

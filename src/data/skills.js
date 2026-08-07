@@ -11,13 +11,13 @@ export const skillGroups = [
     ],
   },
   {
-    label: '3D & Motion',
+    label: 'Motion & Animation',
     color: '#22d3ee',
     skills: [
-      { name: 'Three.js', level: 90 },
-      { name: 'React Three Fiber', level: 88 },
       { name: 'GSAP', level: 92 },
-      { name: 'Framer Motion', level: 87 },
+      { name: 'ScrollTrigger', level: 90 },
+      { name: 'Framer Motion', level: 90 },
+      { name: 'Lenis', level: 85 },
     ],
   },
   {
@@ -35,15 +35,15 @@ export const skillGroups = [
 // Flat list used by the orbiting skill sphere.
 export const skillTags = [
   'React',
-  'Three.js',
   'GSAP',
   'Node',
   'TypeScript',
   'Vite',
-  'WebGL',
+  'ScrollTrigger',
   'Tailwind',
   'Next.js',
-  'Framer',
+  'Framer Motion',
   'GraphQL',
+  'Figma',
   'Docker',
 ];

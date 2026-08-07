@@ -2,28 +2,32 @@
 
 export const services = [
   {
-    icon: '🌐',
+    code: 'WD',
     title: 'Web Development',
     description:
       'Fast, accessible, SEO-ready sites and web apps built with React, Vite and modern tooling.',
+    tags: ['React', 'Vite', 'TypeScript', 'Tailwind'],
   },
   {
-    icon: '🎯',
+    code: 'IE',
     title: 'Interface Engineering',
     description:
       'Design systems, complex UI and data-rich dashboards built to stay fast and maintainable.',
+    tags: ['Design systems', 'Dashboards', 'Component libraries'],
   },
   {
-    icon: '✨',
-    title: 'Motion Design',
+    code: 'MO',
+    title: 'Motion & Interaction',
     description:
       'Scroll-driven storytelling and micro-interactions using GSAP, ScrollTrigger and Framer Motion.',
+    tags: ['GSAP', 'ScrollTrigger', 'Framer Motion'],
   },
   {
-    icon: '⚡',
+    code: 'PE',
     title: 'Performance',
     description:
       'Audits and optimisation to hit Lighthouse 90+ — code-splitting, asset pipelines and Core Web Vitals.',
+    tags: ['Core Web Vitals', 'Lighthouse 90+', 'Bundle budgets'],
   },
 ];
 

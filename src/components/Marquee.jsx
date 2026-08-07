@@ -16,7 +16,7 @@ const items = [
 export default function Marquee() {
   const row = [...items, ...items];
   return (
-    <section className="border-y border-line bg-surface py-5" aria-hidden="true">
+    <section className="border-y border-line bg-surface/50 py-5 backdrop-blur-sm" aria-hidden="true">
       <div className="relative flex overflow-hidden">
         <div className="flex shrink-0 animate-marquee gap-10 pr-10">
           {row.map((t, i) => (

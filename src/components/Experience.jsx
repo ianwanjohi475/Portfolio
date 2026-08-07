@@ -3,7 +3,7 @@ import { timeline } from '../data/timeline.js';
 
 export default function Experience() {
   return (
-    <section id="experience" className="scroll-mt-24 border-y border-white/5 bg-surface py-28">
+    <section id="experience" className="scroll-mt-28 border-y border-line bg-surface/40 py-24">
       <div className="container-x">
         <Reveal>
           <p className="eyebrow">Journey</p>
