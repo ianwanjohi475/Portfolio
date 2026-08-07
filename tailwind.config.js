@@ -14,12 +14,12 @@ export default {
         // Handshake-style palette: lime accent + deep teal-forest + sage.
         // (Kept under the `teal` key so existing token classes keep working.)
         teal: {
-          bright: '#cdf24a', // lime / chartreuse — signature accent
-          400: '#8bbf63', // sage / olive green
-          500: '#4f8060', // mid green
+          bright: '#3ddc84', // emerald green — the small-accent colour
+          400: '#7fd0a0', // soft green
+          500: '#3f9e6a', // mid green
           600: '#2f5645', // deep teal-green
           700: '#1f3f36', // forest
-          ink: '#152a0d', // dark text placed on lime
+          ink: '#0c2016', // dark text placed on light surfaces / green
         },
       },
       fontFamily: {

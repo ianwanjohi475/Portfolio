@@ -30,7 +30,7 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-[1.6fr_1fr_1fr]">
           <div>
             <a href="#hero" className="flex items-center gap-2.5" aria-label={`${site.name} — home`}>
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-teal-bright font-display text-base text-teal-ink">
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-white font-display text-base text-teal-ink shadow-sm">
                 IW
               </span>
               <span className="font-display text-lg">Ian Wanjohi</span>
@@ -56,7 +56,7 @@ export default function Footer() {
                       href={l.href}
                       target={l.href.startsWith('#') ? undefined : '_blank'}
                       rel={l.href.startsWith('#') ? undefined : 'noreferrer noopener'}
-                      className="text-fg/70 transition hover:text-teal-600 dark:hover:text-teal-bright"
+                      className="text-fg/70 transition hover:text-teal-bright"
                     >
                       {l.label}
                     </a>

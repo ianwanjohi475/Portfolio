@@ -44,11 +44,11 @@ export default function Navbar() {
         animate={{ maxWidth: scrolled ? 900 : 1280 }}
         transition={{ type: 'spring', stiffness: 260, damping: 30 }}
         className={`flex w-full items-center justify-between gap-3 rounded-full border py-2 pl-2 pr-2 transition-colors duration-300 ${
-          scrolled ? 'border-border bg-card/85 backdrop-blur-xl' : 'border-transparent bg-transparent'
+          scrolled ? 'surface border-border bg-card/90 backdrop-blur-xl' : 'border-transparent bg-transparent'
         }`}
       >
         <a href="#hero" className="flex items-center gap-2.5 pl-1" aria-label={`${site.name} — home`}>
-          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-teal-bright font-display text-base text-teal-ink">
+          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white font-display text-base text-teal-ink shadow-sm">
             IW
           </span>
           <AnimatePresence initial={false}>
@@ -126,7 +126,7 @@ export default function Navbar() {
             target="_blank"
             rel="noreferrer noopener"
             data-cursor
-            className="hidden rounded-full bg-teal-bright px-5 py-2 text-sm font-semibold text-teal-ink transition hover:brightness-110 sm:inline-block"
+            className="hidden rounded-full bg-white px-5 py-2 text-sm font-semibold text-teal-ink shadow-sm transition hover:bg-white/90 sm:inline-block"
           >
             Let's talk
           </a>
@@ -148,7 +148,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="absolute inset-x-3 top-[4.5rem] overflow-hidden rounded-3xl border border-border bg-card p-3 backdrop-blur-xl lg:hidden"
+            className="surface absolute inset-x-3 top-[4.5rem] overflow-hidden rounded-3xl border border-border bg-card p-3 backdrop-blur-xl lg:hidden"
           >
             <ul className="flex flex-col">
               {links.map((l) => (

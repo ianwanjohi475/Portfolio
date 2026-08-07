@@ -15,7 +15,7 @@ export default function Contact() {
               <p className="eyebrow">Let's talk</p>
               <h2 className="mx-auto max-w-3xl font-display text-4xl uppercase leading-[0.98] sm:text-6xl">
                 Have a project in mind?{' '}
-                <span className="text-teal-grad">Let's build it.</span>
+                <span className="text-teal-500 dark:text-teal-bright">Let's build it.</span>
               </h2>
               <p className="mx-auto mt-5 max-w-xl text-muted">
                 The fastest way to reach me is WhatsApp — I usually reply within a
