@@ -3,7 +3,6 @@ import Counter from './Counter.jsx';
 import Placeholder from './Placeholder.jsx';
 import { stats } from '../data/content.js';
 import { site, waLink } from '../data/site.js';
-import { DownloadIcon } from './icons.jsx';
 
 export default function About() {
   return (
@@ -62,11 +61,11 @@ export default function About() {
 
           <Reveal delay={0.1}>
             <div className="mt-9 flex flex-wrap gap-3">
-              <a href={site.resume} download className="btn-teal">
-                <DownloadIcon /> Download CV
-              </a>
-              <a href={waLink()} target="_blank" rel="noreferrer noopener" className="btn-ghost">
+              <a href={waLink()} target="_blank" rel="noreferrer noopener" className="btn-teal">
                 Message on WhatsApp
+              </a>
+              <a href="#work" className="btn-ghost">
+                View my work
               </a>
             </div>
           </Reveal>

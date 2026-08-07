@@ -1,20 +1,23 @@
-import { useMemo, useState } from 'react';
-import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
+import { useMemo } from 'react';
 import Reveal from './Reveal.jsx';
 import ProjectCard from './ProjectCard.jsx';
 import { projects, categories } from '../data/projects.js';
 
 export default function Projects() {
-  const [filter, setFilter] = useState('All');
-
-  const visible = useMemo(() => {
-    const list =
-      filter === 'All' ? projects : projects.filter((p) => p.category === filter);
-    // Sort: featured first, then newest year first.
-    return [...list].sort(
-      (a, b) => Number(b.featured) - Number(a.featured) || b.year.localeCompare(a.year),
-    );
-  }, [filter]);
+  // Group by category, newest first (featured bubble up) within each group.
+  const groups = useMemo(() => {
+    const order = categories.filter((c) => c !== 'All');
+    return order
+      .map((cat) => ({
+        cat,
+        items: projects
+          .filter((p) => p.category === cat)
+          .sort(
+            (a, b) => Number(b.featured) - Number(a.featured) || b.year.localeCompare(a.year),
+          ),
+      }))
+      .filter((g) => g.items.length > 0);
+  }, []);
 
   return (
     <section id="work" className="scroll-mt-28 py-24">
@@ -28,46 +31,35 @@ export default function Projects() {
               </h2>
             </div>
           </Reveal>
-
           <Reveal delay={0.1}>
-            <div
-              className="inline-flex rounded-full border border-border bg-card p-1"
-              role="tablist"
-              aria-label="Filter projects"
-            >
-              {categories.map((c) => (
-                <button
-                  key={c}
-                  role="tab"
-                  aria-selected={filter === c}
-                  onClick={() => setFilter(c)}
-                  className={`relative rounded-full px-4 py-2 text-sm font-medium transition ${
-                    filter === c ? 'text-teal-ink' : 'text-fg/65 hover:text-fg'
-                  }`}
-                >
-                  {filter === c && (
-                    <motion.span
-                      layoutId="filter-pill"
-                      className="absolute inset-0 rounded-full bg-teal-bright"
-                      transition={{ type: 'spring', stiffness: 400, damping: 32 }}
-                    />
-                  )}
-                  <span className="relative z-10">{c}</span>
-                </button>
-              ))}
-            </div>
+            <p className="max-w-sm text-muted">
+              Grouped by type and sorted with my latest, featured work first.
+            </p>
           </Reveal>
         </div>
 
-        <LayoutGroup>
-          <motion.div layout className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            <AnimatePresence mode="popLayout">
-              {visible.map((p) => (
-                <ProjectCard key={p.id} project={p} wide={filter === 'All' && p.featured} />
-              ))}
-            </AnimatePresence>
-          </motion.div>
-        </LayoutGroup>
+        <div className="mt-14 space-y-16">
+          {groups.map((g) => (
+            <div key={g.cat}>
+              <Reveal>
+                <div className="mb-6 flex items-center gap-4">
+                  <h3 className="font-display text-xl uppercase tracking-tight">{g.cat}</h3>
+                  <span className="font-mono text-sm text-teal-600 dark:text-teal-bright">
+                    {String(g.items.length).padStart(2, '0')}
+                  </span>
+                  <span className="h-px flex-1 bg-border" />
+                </div>
+              </Reveal>
+              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {g.items.map((p, i) => (
+                  <Reveal key={p.id} delay={(i % 3) * 0.08}>
+                    <ProjectCard project={p} />
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
