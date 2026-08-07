@@ -11,14 +11,15 @@ export default {
         muted: 'rgb(var(--muted) / <alpha-value>)',
         card: 'rgb(var(--card) / <alpha-value>)',
         border: 'rgb(var(--border) / <alpha-value>)',
-        // Teal brand system (works on both themes)
+        // Handshake-style palette: lime accent + deep teal-forest + sage.
+        // (Kept under the `teal` key so existing token classes keep working.)
         teal: {
-          bright: '#14d6b8',
-          400: '#2dd4bf',
-          500: '#14b8a6',
-          600: '#0d9488',
-          700: '#0f766e',
-          ink: '#04231e',
+          bright: '#cdf24a', // lime / chartreuse — signature accent
+          400: '#8bbf63', // sage / olive green
+          500: '#4f8060', // mid green
+          600: '#2f5645', // deep teal-green
+          700: '#1f3f36', // forest
+          ink: '#152a0d', // dark text placed on lime
         },
       },
       fontFamily: {

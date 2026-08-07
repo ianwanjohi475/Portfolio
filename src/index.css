@@ -9,18 +9,18 @@
   --fg: 8 20 18;
   --muted: 82 100 96;
   --card: 255 255 255;
-  --border: 224 231 229;
-  --grid: 20 184 166; /* teal grid lines */
-  --grid-alpha: 0.1;
+  --border: 223 229 220;
+  --grid: 79 128 96; /* deep-green grid lines */
+  --grid-alpha: 0.12;
   color-scheme: light;
 }
 .dark {
-  --bg: 7 16 15;
-  --fg: 236 253 248;
-  --muted: 150 176 170;
-  --card: 15 29 26;
-  --border: 28 48 44;
-  --grid: 45 212 191;
+  --bg: 9 20 16;
+  --fg: 237 245 235;
+  --muted: 156 176 158;
+  --card: 16 30 24;
+  --border: 33 55 43;
+  --grid: 139 191 99; /* sage grid lines */
   --grid-alpha: 0.08;
   color-scheme: dark;
 }
@@ -66,7 +66,7 @@ body {
   }
   .mono-tile {
     @apply grid shrink-0 place-items-center rounded-xl font-display text-teal-ink;
-    background: linear-gradient(135deg, #2ff3d0, #14b8a6);
+    background: linear-gradient(135deg, #cdf24a, #8bbf63);
   }
   .pill {
     @apply inline-flex items-center gap-2 rounded-full border border-teal-500/25 bg-teal-500/[0.07] px-5 py-2.5 text-sm font-medium text-fg/85 transition hover:border-teal-400 hover:text-fg;
@@ -104,13 +104,14 @@ body {
   width: 7px;
   height: 7px;
   margin: -3.5px 0 0 -3.5px;
-  background: #14d6b8;
+  background: #cdf24a;
 }
 .cursor-ring {
   width: 40px;
   height: 40px;
   margin: -20px 0 0 -20px;
-  border: 1.5px solid rgba(20, 214, 184, 0.7);
+  border: 1.6px solid rgba(255, 255, 255, 0.85);
+  mix-blend-mode: difference;
   transition: width 0.25s ease, height 0.25s ease, margin 0.25s ease,
     background-color 0.25s ease, border-color 0.25s ease;
 }
@@ -118,8 +119,9 @@ body {
   width: 66px;
   height: 66px;
   margin: -33px 0 0 -33px;
-  background: rgba(20, 214, 184, 0.12);
-  border-color: rgba(20, 214, 184, 0.9);
+  background: rgba(205, 242, 74, 0.18);
+  border-color: rgba(205, 242, 74, 0.9);
+  mix-blend-mode: normal;
 }
 @media (pointer: fine) {
   .has-cursor,
@@ -138,7 +140,7 @@ body {
 .wa-pulse { animation: wa-pulse 2.2s ease-out infinite; }
 
 :focus-visible {
-  outline: 2px solid #14b8a6;
+  outline: 2px solid #4f8060;
   outline-offset: 3px;
   border-radius: 6px;
 }
