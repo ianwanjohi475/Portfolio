@@ -44,7 +44,7 @@ export default function Projects() {
               <Reveal>
                 <div className="mb-6 flex items-center gap-4">
                   <h3 className="font-display text-xl uppercase tracking-tight">{g.cat}</h3>
-                  <span className="font-mono text-sm text-teal-600 dark:text-teal-bright">
+                  <span className="font-mono text-sm text-teal-bright">
                     {String(g.items.length).padStart(2, '0')}
                   </span>
                   <span className="h-px flex-1 bg-border" />

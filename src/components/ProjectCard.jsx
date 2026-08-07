@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { gsap } from 'gsap';
-import Placeholder from './Placeholder.jsx';
+import ProjectMockup from './ProjectMockup.jsx';
 
 const initials = (title) =>
   title
@@ -46,19 +46,14 @@ export default function ProjectCard({ project }) {
         data-cursor
         className="card group block h-full [transform-style:preserve-3d]"
       >
-        {/* Banner */}
-        <div className="relative overflow-hidden">
-          <Placeholder
-            seed={project.image}
-            label=""
-            ratio="16 / 10"
-          />
-          <div className="absolute inset-0 grid-tex opacity-30 mix-blend-overlay" />
+        {/* Banner — realistic product mockup */}
+        <div className="relative overflow-hidden" style={{ aspectRatio: '16 / 10' }}>
+          <ProjectMockup project={project} />
           {/* monogram */}
-          <div className="absolute left-4 top-4 mono-tile h-11 w-11 text-sm shadow-lg">
+          <div className="absolute left-4 top-4 mono-tile z-10 h-11 w-11 text-sm shadow-lg">
             {initials(project.title)}
           </div>
-          <span className="absolute right-4 top-4 rounded-full bg-black/50 px-3 py-1 text-[11px] font-medium text-white/90 backdrop-blur">
+          <span className="absolute right-4 top-4 z-10 rounded-full bg-black/50 px-3 py-1 text-[11px] font-medium text-white/90 backdrop-blur">
             {project.category}
           </span>
         </div>

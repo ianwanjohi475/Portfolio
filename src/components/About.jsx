@@ -14,7 +14,7 @@ export default function About() {
               <Placeholder seed="ian-portrait" label="Ian Wanjohi" ratio="4 / 5" />
             </div>
             <div className="card absolute -bottom-6 -right-4 px-5 py-4">
-              <p className="font-display text-2xl text-teal-grad">
+              <p className="font-display text-2xl text-teal-500 dark:text-teal-bright">
                 <Counter value={6} suffix="+ yrs" />
               </p>
               <p className="text-xs text-muted">building for the web</p>

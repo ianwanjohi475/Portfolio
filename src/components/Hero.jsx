@@ -36,32 +36,6 @@ export default function Hero() {
       ref={root}
       className="relative flex min-h-[100svh] items-center overflow-hidden pt-28"
     >
-      {/* LIGHT: Handshake-style green/teal gradient. DARK: deep glows. */}
-      <div className="absolute inset-0 -z-10 dark:hidden" aria-hidden="true">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(85% 80% at 80% 85%, rgba(150,168,99,0.6) 0%, transparent 55%), linear-gradient(150deg, #15332b 0%, #26493b 40%, #45654a 70%, #7f9654 100%)',
-          }}
-        />
-        <div
-          className="absolute inset-0 opacity-[0.12]"
-          style={{
-            backgroundImage:
-              'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
-            backgroundSize: '48px 48px',
-          }}
-        />
-      </div>
-      <div className="absolute inset-0 -z-10 hidden dark:block" aria-hidden="true">
-        <div className="absolute left-1/2 top-1/3 h-[70vh] w-[70vh] -translate-x-1/2 rounded-full bg-teal-600/30 blur-[120px] animate-blob" />
-        <div className="absolute right-[8%] top-[12%] h-[42vh] w-[42vh] rounded-full bg-teal-400/15 blur-[110px] animate-blob" />
-        <div className="absolute bottom-[6%] left-[6%] h-[40vh] w-[40vh] rounded-full bg-teal-500/15 blur-[110px] animate-blob" />
-      </div>
-      {/* fade into the sections below */}
-      <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-b from-transparent to-bg" aria-hidden="true" />
-
       <motion.div style={{ y, opacity: fade }} className="container-x w-full text-center">
         <p className="hero-fade mb-4 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-white dark:border-teal-500/30 dark:bg-teal-500/10 dark:text-teal-bright">
           {site.role} · {site.location}
