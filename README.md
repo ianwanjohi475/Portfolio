@@ -1,23 +1,28 @@
 # Ian Wanjohi — Portfolio
 
-A cinematic, animated developer portfolio built with **React + Vite**, **Three.js /
-React Three Fiber**, **GSAP + ScrollTrigger**, **Framer Motion** and **Lenis**
-smooth scrolling. Fully responsive, accessible, and performance-minded
-(code-splitting, DPR-capped WebGL, lazy 3D, reduced-motion support).
+A cinematic, animated developer portfolio built with **React + Vite**, **GSAP +
+ScrollTrigger**, **Framer Motion** and **Lenis** smooth scrolling — with a bold
+Handshake-inspired display type system in a **teal** palette. Fully responsive,
+accessible, and lightweight (no WebGL/Three.js, code-splitting, reduced-motion
+support). Total JS is ~150 KB gzipped.
 
 ## Tech stack
 
 | Area        | Choice |
 |-------------|--------|
 | Framework   | React 18 + Vite 6 |
-| 3D / WebGL  | Three.js, @react-three/fiber, @react-three/drei |
 | Motion      | GSAP (+ ScrollTrigger), Framer Motion, Lenis |
 | Styling     | Tailwind CSS 3 |
+| Type        | Archivo Black (display) + Inter (body) |
 
 > **Note on versions:** the original brief targeted the very latest majors
-> (React 19, R3F v9, Tailwind 4, Vite 8). This build pins a mutually-compatible,
+> (React 19, Tailwind 4, Vite 8). This build pins a mutually-compatible,
 > production-proven set that installs and builds cleanly today. The architecture
 > is identical — bump the versions in `package.json` when you're ready.
+>
+> **No Three.js:** an earlier version used Three.js for 3D, but it was heavy and
+> caused jank. It's been fully removed in favour of GPU-light CSS gradients and
+> lightweight motion, so the site stays smooth on every device.
 
 ## Run it locally
 
@@ -58,17 +63,15 @@ turns on gzip compression and long-term caching for a better Lighthouse score.
 
 > **Which React?** The server never runs React — it just serves the compiled
 > files — so the React version has no effect on hosting. This project uses the
-> current stable **React 18**, which is the safest, best-supported choice with
-> the 3D/animation stack.
+> current stable **React 18**, the safest, best-supported choice.
 
 ## Project structure
 
 ```
 src/
-  assets/                 # drop real WebP/AVIF/video/GLTF here
+  assets/                 # drop real WebP/AVIF/video here
   components/
-    three/                # R3F canvases (HeroScene, FeaturedObject)
-    Navbar, Hero, About, Projects, ProjectCard, FeaturedScene,
+    Navbar, Hero, Marquee, Showcase, About, Projects, ProjectCard,
     Skills, Experience, Lab, Services, Testimonials, Contact, Footer,
     Reveal, Counter, MagneticButton, Placeholder, ScrollProgress
   data/
@@ -80,13 +83,14 @@ src/
     useLenis.js           # Lenis <-> GSAP ScrollTrigger integration
   App.jsx                 # section composition
   main.jsx                # React entry
-  index.css               # Tailwind + global styles
+  index.css               # Tailwind + global styles + design tokens
 ```
 
 ## Sections
 
-Hero → About → Projects (filterable) → Featured 3D Scene → Skills → Experience
-(timeline) → Ian Lab → Services → Testimonials → Contact → Footer.
+Hero (giant wordmark) → Marquee → About → Showcase (teal card panel) → Projects
+(filterable) → Skills → Experience (timeline) → Ian Lab → Services →
+Testimonials → Contact → Footer (giant signature wordmark).
 
 ## Customising
 

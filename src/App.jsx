@@ -2,9 +2,10 @@ import { useLenis } from './hooks/useLenis.js';
 import Navbar from './components/Navbar.jsx';
 import ScrollProgress from './components/ScrollProgress.jsx';
 import Hero from './components/Hero.jsx';
+import Marquee from './components/Marquee.jsx';
+import Showcase from './components/Showcase.jsx';
 import About from './components/About.jsx';
 import Projects from './components/Projects.jsx';
-import FeaturedScene from './components/FeaturedScene.jsx';
 import Skills from './components/Skills.jsx';
 import Experience from './components/Experience.jsx';
 import Lab from './components/Lab.jsx';
@@ -22,9 +23,10 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
+        <Marquee />
         <About />
+        <Showcase />
         <Projects />
-        <FeaturedScene />
         <Skills />
         <Experience />
         <Lab />

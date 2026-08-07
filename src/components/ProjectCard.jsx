@@ -39,7 +39,7 @@ export default function ProjectCard({ project }) {
         ref={ref}
         onMouseMove={handleMove}
         onMouseLeave={handleLeave}
-        className="overflow-hidden rounded-2xl glass transition-shadow duration-300 hover:shadow-2xl hover:shadow-accent/20"
+        className="overflow-hidden rounded-2xl glass transition-shadow duration-300 hover:shadow-2xl hover:shadow-teal-500/20"
       >
         <div className="relative overflow-hidden">
           <Placeholder seed={project.image} label={project.category} />
@@ -60,7 +60,7 @@ export default function ProjectCard({ project }) {
         <div className="p-5">
           <div className="flex items-center justify-between gap-3">
             <h3 className="font-display text-lg font-semibold">{project.title}</h3>
-            <span className="text-[11px] uppercase tracking-widest text-accent2">
+            <span className="text-[11px] uppercase tracking-widest text-teal-bright">
               {project.category}
             </span>
           </div>

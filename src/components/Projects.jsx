@@ -16,12 +16,12 @@ export default function Projects() {
   );
 
   return (
-    <section id="projects" className="scroll-mt-24 py-28">
+    <section id="work" className="scroll-mt-28 py-24">
       <div className="container-x">
         <Reveal>
           <p className="eyebrow">Selected work</p>
           <h2 className="section-title">
-            Projects that <span className="text-gradient">move</span>
+            Projects that <span className="text-teal-grad">move</span>
           </h2>
         </Reveal>
 

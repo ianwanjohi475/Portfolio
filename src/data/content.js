@@ -8,10 +8,10 @@ export const services = [
       'Fast, accessible, SEO-ready sites and web apps built with React, Vite and modern tooling.',
   },
   {
-    icon: '🧊',
-    title: '3D & WebGL',
+    icon: '🎯',
+    title: 'Interface Engineering',
     description:
-      'Interactive 3D scenes, product configurators and immersive experiences with Three.js & R3F.',
+      'Design systems, complex UI and data-rich dashboards built to stay fast and maintainable.',
   },
   {
     icon: '✨',

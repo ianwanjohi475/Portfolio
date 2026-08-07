@@ -3,12 +3,12 @@
 // picks a stable gradient; swap the whole component for <img>/<video> later.
 
 const palettes = [
-  ['#7c5cff', '#22d3ee'],
-  ['#f472b6', '#7c5cff'],
-  ['#22d3ee', '#34d399'],
-  ['#fb7185', '#fbbf24'],
-  ['#a78bfa', '#22d3ee'],
-  ['#38bdf8', '#818cf8'],
+  ['#2ff3d0', '#0f766e'],
+  ['#5eead4', '#0d9488'],
+  ['#14b8a6', '#0b3b36'],
+  ['#2dd4bf', '#134e4a'],
+  ['#22d3ee', '#0f766e'],
+  ['#34d399', '#115e59'],
 ];
 
 function hash(str) {

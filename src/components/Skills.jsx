@@ -30,7 +30,7 @@ export default function Skills() {
         <Reveal>
           <p className="eyebrow">Toolkit</p>
           <h2 className="section-title">
-            Skills &amp; <span className="text-gradient">stack</span>
+            Skills &amp; <span className="text-teal-grad">stack</span>
           </h2>
         </Reveal>
 
@@ -60,7 +60,7 @@ export default function Skills() {
             {skillTags.map((t) => (
               <li
                 key={t}
-                className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-white/70 transition hover:-translate-y-0.5 hover:border-accent/50 hover:text-white"
+                className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-white/70 transition hover:-translate-y-0.5 hover:border-teal-400/50 hover:text-white"
               >
                 {t}
               </li>

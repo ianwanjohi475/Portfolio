@@ -12,11 +12,9 @@ export default defineConfig({
     cssCodeSplit: true,
     rollupOptions: {
       output: {
-        // Split heavy 3D / animation libs into their own chunks so the
-        // above-the-fold bundle stays small and Lighthouse-friendly.
+        // Split the animation libs into their own chunk so the above-the-fold
+        // bundle stays small and Lighthouse-friendly.
         manualChunks: {
-          three: ['three'],
-          r3f: ['@react-three/fiber', '@react-three/drei'],
           motion: ['framer-motion', 'gsap'],
         },
       },

@@ -9,7 +9,7 @@ export default function Lab() {
         <Reveal>
           <p className="eyebrow">Ian Lab</p>
           <h2 className="section-title">
-            Experiments &amp; <span className="text-gradient">play</span>
+            Experiments &amp; <span className="text-teal-grad">play</span>
           </h2>
           <p className="mt-4 max-w-xl text-white/60">
             A sandbox of shaders, prototypes and creative-coding studies — where
