@@ -42,7 +42,7 @@ export default function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              'radial-gradient(120% 100% at 50% 30%, #3ec79a 0%, #23987a 38%, #12645420 70%, transparent 100%), linear-gradient(160deg, #1f7a62, #0e5748)',
+              'radial-gradient(85% 80% at 80% 85%, rgba(150,168,99,0.6) 0%, transparent 55%), linear-gradient(150deg, #15332b 0%, #26493b 40%, #45654a 70%, #7f9654 100%)',
           }}
         />
         <div
@@ -73,11 +73,7 @@ export default function Hero() {
               {line.split('').map((c, i) => (
                 <span
                   key={i}
-                  className={`hero-char inline-block will-change-transform ${
-                    li === 1
-                      ? 'text-white dark:bg-gradient-to-r dark:from-teal-bright dark:via-teal-400 dark:to-teal-500 dark:bg-clip-text dark:text-transparent'
-                      : 'text-white'
-                  }`}
+                  className="hero-char inline-block text-white will-change-transform"
                   aria-hidden="true"
                 >
                   {c}
