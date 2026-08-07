@@ -2,50 +2,41 @@ import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const links = [
+  { href: '#work', label: 'Work' },
   { href: '#about', label: 'About' },
-  { href: '#projects', label: 'Projects' },
   { href: '#skills', label: 'Skills' },
   { href: '#experience', label: 'Experience' },
-  { href: '#lab', label: 'Lab' },
   { href: '#contact', label: 'Contact' },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => (document.body.style.overflow = '');
+  }, [open]);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass py-3' : 'py-5'
-      }`}
-    >
+    <div className="fixed inset-x-0 top-4 z-50 px-4">
       <nav
-        className="container-x flex items-center justify-between"
+        className="mx-auto flex max-w-4xl items-center justify-between gap-3 rounded-full border border-white/10 bg-ink/70 py-2 pl-2 pr-2 shadow-2xl shadow-black/40 backdrop-blur-xl sm:pl-3"
         aria-label="Primary"
       >
         <a
           href="#hero"
-          className="font-display text-lg font-bold tracking-tight"
+          className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-teal-bright font-display text-lg text-teal-ink"
           aria-label="Ian Wanjohi — home"
         >
-          <span className="text-gradient">IW</span>
-          <span className="ml-1 hidden text-white/70 sm:inline">Ian Wanjohi</span>
+          IW
         </a>
 
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-7 md:flex">
           {links.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
-                className="text-sm text-white/70 transition-colors hover:text-white"
+                className="text-sm font-medium text-white/70 transition-colors hover:text-white"
               >
                 {l.label}
               </a>
@@ -53,47 +44,57 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <a
-          href="#contact"
-          className="hidden rounded-full bg-accent px-5 py-2 text-sm font-medium text-white shadow-lg shadow-accent/30 transition hover:bg-accent/90 md:inline-block"
-        >
-          Let's talk
-        </a>
-
-        <button
-          className="grid h-10 w-10 place-items-center rounded-lg glass md:hidden"
-          onClick={() => setOpen((o) => !o)}
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-        >
-          <span className="text-xl">{open ? '✕' : '☰'}</span>
-        </button>
+        <div className="flex items-center gap-2">
+          <a
+            href="#contact"
+            className="hidden rounded-full bg-teal-bright px-5 py-2 text-sm font-semibold text-teal-ink transition hover:brightness-105 sm:inline-block"
+          >
+            Let's talk
+          </a>
+          <button
+            className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 md:hidden"
+            onClick={() => setOpen((o) => !o)}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+          >
+            <span className="text-lg">{open ? '✕' : '☰'}</span>
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden md:hidden"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            className="mx-auto mt-2 max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-ink/95 p-2 backdrop-blur-xl md:hidden"
           >
-            <ul className="container-x flex flex-col gap-1 py-4">
+            <ul className="flex flex-col">
               {links.map((l) => (
                 <li key={l.href}>
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-lg px-3 py-3 text-white/80 transition hover:bg-white/5 hover:text-white"
+                    className="block rounded-2xl px-4 py-3 text-white/80 transition hover:bg-white/5 hover:text-white"
                   >
                     {l.label}
                   </a>
                 </li>
               ))}
+              <li className="p-2">
+                <a
+                  href="#contact"
+                  onClick={() => setOpen(false)}
+                  className="btn-teal w-full"
+                >
+                  Let's talk
+                </a>
+              </li>
             </ul>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </div>
   );
 }

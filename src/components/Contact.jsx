@@ -34,7 +34,7 @@ export default function Contact() {
   };
 
   const field =
-    'w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-white placeholder-white/40 outline-none transition focus:border-accent2/60';
+    'w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-white placeholder-white/40 outline-none transition focus:border-teal-bright/60';
 
   return (
     <section id="contact" className="scroll-mt-24 py-28">
@@ -43,13 +43,13 @@ export default function Contact() {
           <Reveal>
             <p className="eyebrow">Contact</p>
             <h2 className="section-title">
-              Let's build something <span className="text-gradient">unforgettable</span>
+              Let's build something <span className="text-teal-grad">unforgettable</span>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-6 max-w-md text-white/70">
-              Have a project in mind, or just want to talk shop about 3D and the
-              web? Drop me a line — I reply within a day or two.
+              Have a project in mind, or just want to talk shop about the craft
+              of the web? Drop me a line — I reply within a day or two.
             </p>
           </Reveal>
           <Reveal delay={0.15}>
@@ -152,7 +152,7 @@ export default function Contact() {
               <MagneticButton
                 as="button"
                 type="submit"
-                className="w-full rounded-xl bg-accent px-6 py-3 font-medium text-white shadow-lg shadow-accent/30 transition hover:bg-accent/90"
+                className="btn-teal w-full"
               >
                 Send message
               </MagneticButton>

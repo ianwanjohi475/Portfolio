@@ -16,7 +16,7 @@ export default function Testimonials() {
         <Reveal>
           <p className="eyebrow">Kind words</p>
           <h2 className="section-title">
-            What clients <span className="text-gradient">say</span>
+            What clients <span className="text-teal-grad">say</span>
           </h2>
         </Reveal>
 
@@ -65,7 +65,7 @@ export default function Testimonials() {
                     onClick={() => setIndex(i)}
                     aria-label={`Go to testimonial ${i + 1}`}
                     className={`h-2 rounded-full transition-all ${
-                      i === index ? 'w-6 bg-accent' : 'w-2 bg-white/20'
+                      i === index ? 'w-6 bg-teal-bright' : 'w-2 bg-white/20'
                     }`}
                   />
                 ))}
