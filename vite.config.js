@@ -12,10 +12,9 @@ export default defineConfig({
     cssCodeSplit: true,
     rollupOptions: {
       output: {
-        // Split the animation libs into their own chunk so the above-the-fold
-        // bundle stays small and Lighthouse-friendly.
+        // Keep GSAP in its own chunk so the app shell stays small.
         manualChunks: {
-          motion: ['framer-motion', 'gsap'],
+          gsap: ['gsap'],
         },
       },
     },

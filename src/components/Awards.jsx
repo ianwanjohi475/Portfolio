@@ -1,4 +1,4 @@
-import Reveal from './Reveal.jsx';
+import { Reveal, MaskText } from './anim.jsx';
 import { awards } from '../data/content.js';
 
 export default function Awards() {
@@ -6,12 +6,10 @@ export default function Awards() {
     <section id="awards" className="scroll-mt-24 py-24">
       <div className="container-x">
         <div className="grid gap-8 lg:grid-cols-2 lg:items-end">
-          <Reveal>
-            <div>
-              <p className="eyebrow">Recognitions</p>
-              <h2 className="mega">Awards</h2>
-            </div>
-          </Reveal>
+          <div>
+            <Reveal><p className="eyebrow">Recognitions</p></Reveal>
+            <MaskText as="h2" text="Awards" className="mega" />
+          </div>
           <Reveal delay={0.1}>
             <p className="max-w-md text-muted lg:pb-4">
               A curated list of awards and recognitions that highlight milestones

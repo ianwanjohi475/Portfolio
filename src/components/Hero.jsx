@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import { gsap } from '../lib/gsap.js';
+import MagneticButton from './MagneticButton.jsx';
 import { site } from '../data/site.js';
 import { GitHubIcon, LinkedInIcon, XIcon } from './icons.jsx';
 
@@ -55,8 +56,8 @@ export default function Hero() {
         </p>
 
         <div className="hero-fade mt-9 flex flex-wrap items-center gap-4">
-          <a href="#work" className="btn-dark" data-cursor>See selected work</a>
-          <a href="#contact" className="btn-outline" data-cursor>Start a project</a>
+          <MagneticButton href="#work" className="btn-dark">See selected work</MagneticButton>
+          <MagneticButton href="#contact" className="btn-outline">Start a project</MagneticButton>
         </div>
       </div>
 

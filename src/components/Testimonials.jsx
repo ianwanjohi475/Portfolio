@@ -1,4 +1,4 @@
-import Reveal from './Reveal.jsx';
+import { Reveal } from './anim.jsx';
 import { testimonials } from '../data/content.js';
 import { site } from '../data/site.js';
 

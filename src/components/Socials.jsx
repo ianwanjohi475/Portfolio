@@ -12,8 +12,8 @@ const items = [
 export default function Socials({ className = '', variant = 'circle' }) {
   const cls =
     variant === 'bare'
-      ? 'grid h-9 w-9 place-items-center text-fg/70 transition hover:text-rust'
-      : 'grid h-10 w-10 place-items-center rounded-full border border-border/40 text-fg/80 transition hover:bg-fg hover:text-bg';
+      ? 'grid h-9 w-9 place-items-center text-fg/70 transition-all duration-300 hover:-translate-y-1 hover:text-rust'
+      : 'grid h-10 w-10 place-items-center rounded-full border border-border/40 text-fg/80 transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:border-fg hover:bg-fg hover:text-bg';
   return (
     <div className={`flex items-center gap-2 ${className}`}>
       {items.map(({ key, label, href, Icon }) => (
