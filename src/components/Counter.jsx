@@ -1,21 +1,40 @@
 import { useEffect, useRef, useState } from 'react';
-import { animate, useInView } from 'framer-motion';
+import { gsap, prefersReduced } from '../lib/gsap.js';
 
-/** Counts up from 0 to `value` the first time it scrolls into view. */
+/** Counts up to `value` the first time it scrolls into view (GSAP tween). */
 export default function Counter({ value, suffix = '', duration = 1.6 }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
-    if (!inView) return;
-    const controls = animate(0, value, {
-      duration,
-      ease: 'easeOut',
-      onUpdate: (v) => setDisplay(Math.round(v)),
-    });
-    return () => controls.stop();
-  }, [inView, value, duration]);
+    const el = ref.current;
+    if (!el) return;
+    if (prefersReduced()) {
+      setDisplay(value);
+      return;
+    }
+    const obj = { v: 0 };
+    let tween;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          tween = gsap.to(obj, {
+            v: value,
+            duration,
+            ease: 'power2.out',
+            onUpdate: () => setDisplay(Math.round(obj.v)),
+          });
+          io.disconnect();
+        }
+      },
+      { threshold: 0.4 },
+    );
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      tween && tween.kill();
+    };
+  }, [value, duration]);
 
   return (
     <span ref={ref}>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
 import { ThemeGlyph } from './ThemeToggle.jsx';
 import { site, waLink } from '../data/site.js';
 import { DownloadIcon } from './icons.jsx';
@@ -34,11 +33,7 @@ export default function Navbar() {
   };
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled ? 'border-b border-border/15 bg-bg/80 backdrop-blur-md' : ''
-      }`}
-    >
+    <header className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${scrolled ? 'border-b border-border/15 bg-bg/80 backdrop-blur-md' : ''}`}>
       <nav className="container-x flex items-center justify-between py-4" aria-label="Primary">
         <a href="#hero" className="font-display text-2xl font-bold tracking-tight" aria-label={`${site.name} — home`} data-cursor>
           IW<span className="text-rust">.</span>
@@ -47,8 +42,9 @@ export default function Navbar() {
         <ul className="hidden items-center gap-8 lg:flex">
           {links.map((l) => (
             <li key={l.href}>
-              <a href={l.href} className="text-sm text-fg/75 transition-colors hover:text-fg" data-cursor>
+              <a href={l.href} className="group relative text-sm text-fg/75 transition-colors hover:text-fg" data-cursor>
                 {l.label}
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-rust transition-all duration-300 group-hover:w-full" />
               </a>
             </li>
           ))}
@@ -70,26 +66,23 @@ export default function Navbar() {
         </div>
       </nav>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden border-t border-border/15 bg-bg lg:hidden">
-            <ul className="container-x flex flex-col py-3">
-              {links.map((l) => (
-                <li key={l.href}>
-                  <a href={l.href} onClick={() => setOpen(false)} className="block py-3 text-lg text-fg/80 transition hover:text-rust">
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-              <li className="pt-3">
-                <a href={waLink()} target="_blank" rel="noreferrer noopener" onClick={() => setOpen(false)} className="btn-dark w-full">
-                  Let's Talk
-                </a>
-              </li>
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* mobile menu (CSS height transition) */}
+      <div className={`overflow-hidden border-t border-border/15 bg-bg transition-[max-height] duration-300 ease-out lg:hidden ${open ? 'max-h-96' : 'max-h-0'}`}>
+        <ul className="container-x flex flex-col py-3">
+          {links.map((l) => (
+            <li key={l.href}>
+              <a href={l.href} onClick={() => setOpen(false)} className="block py-3 text-lg text-fg/80 transition hover:text-rust">
+                {l.label}
+              </a>
+            </li>
+          ))}
+          <li className="pt-3">
+            <a href={waLink()} target="_blank" rel="noreferrer noopener" onClick={() => setOpen(false)} className="btn-dark w-full">
+              Let's Talk
+            </a>
+          </li>
+        </ul>
+      </div>
     </header>
   );
 }

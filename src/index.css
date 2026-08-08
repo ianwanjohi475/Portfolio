@@ -94,16 +94,40 @@ body {
 .cursor-dot { width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; background: #9d2e13; }
 .cursor-ring {
   width: 42px; height: 42px; margin: -21px 0 0 -21px;
+  display: grid; place-items: center;
   border: 1.5px solid rgba(157, 46, 19, 0.7);
-  transition: width .25s ease, height .25s ease, margin .25s ease, background-color .25s ease, border-color .25s ease;
+  transition: width .3s cubic-bezier(.22,1,.36,1), height .3s cubic-bezier(.22,1,.36,1),
+    margin .3s cubic-bezier(.22,1,.36,1), background-color .3s ease, border-color .3s ease;
 }
-.cursor-ring[data-active='true'] {
-  width: 68px; height: 68px; margin: -34px 0 0 -34px;
+.cursor-ring[data-mode='active'] {
+  width: 66px; height: 66px; margin: -33px 0 0 -33px;
   background: rgba(157, 46, 19, 0.12); border-color: rgba(157, 46, 19, 0.9);
 }
+.cursor-ring[data-mode='label'] {
+  width: 96px; height: 96px; margin: -48px 0 0 -48px;
+  background: #9d2e13; border-color: #9d2e13;
+}
+.cursor-label {
+  font-family: "Cascadia Mono", monospace; font-size: 12px; color: #fff;
+  opacity: 0; transition: opacity .2s ease; letter-spacing: .04em;
+}
+.cursor-ring[data-mode='label'] .cursor-label { opacity: 1; }
 @media (pointer: fine) {
   .has-cursor, .has-cursor a, .has-cursor button { cursor: none; }
 }
+
+/* WhatsApp float pop-in + pulse */
+@keyframes wa-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55); }
+  70% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+@keyframes wa-pop {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.wa-pulse { animation: wa-pulse 2.2s ease-out infinite; }
+.wa-pop { animation: wa-pop 0.5s cubic-bezier(.34,1.56,.64,1) both; animation-delay: 0.8s; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

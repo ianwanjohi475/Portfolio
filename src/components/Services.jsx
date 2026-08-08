@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import Reveal from './Reveal.jsx';
+import { Reveal, MaskText } from './anim.jsx';
 import { services } from '../data/content.js';
 
 export default function Services() {
@@ -11,8 +10,8 @@ export default function Services() {
       <div className="container-x text-center">
         <Reveal>
           <p className="eyebrow">What I do</p>
-          <h2 className="mega">Services</h2>
         </Reveal>
+        <MaskText as="h2" text="Services" className="mega" />
         <Reveal delay={0.1}>
           <p className="mx-auto mt-6 max-w-xl text-muted">
             End-to-end product work that elevates your presence, connects with
@@ -36,21 +35,14 @@ export default function Services() {
                 <h3 className={`flex-1 font-display text-3xl font-bold transition-colors sm:text-5xl ${isOpen ? 'text-rust' : 'group-hover:text-rust'}`}>
                   {s.title}
                 </h3>
-                <span className={`text-2xl transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} aria-hidden="true">↓</span>
+                <span className={`text-2xl transition-transform duration-300 ${isOpen ? 'rotate-180 text-rust' : ''}`} aria-hidden="true">↓</span>
               </button>
-              <AnimatePresence initial={false}>
-                {isOpen && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="overflow-hidden"
-                  >
-                    <p className="max-w-2xl pb-8 pl-10 text-lg text-muted">{s.body}</p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {/* grid-rows 0fr→1fr gives a smooth height animation with no JS */}
+              <div className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(.22,1,.36,1)] ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+                <div className="overflow-hidden">
+                  <p className="max-w-2xl pb-8 pl-10 text-lg text-muted">{s.body}</p>
+                </div>
+              </div>
             </div>
           );
         })}

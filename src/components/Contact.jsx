@@ -1,4 +1,5 @@
-import Reveal from './Reveal.jsx';
+import { Reveal } from './anim.jsx';
+import MagneticButton from './MagneticButton.jsx';
 import { site, waLink } from '../data/site.js';
 
 export default function Contact() {
@@ -21,8 +22,8 @@ export default function Contact() {
         </Reveal>
         <Reveal delay={0.15}>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <a href={waLink()} target="_blank" rel="noreferrer noopener" className="btn-dark" data-cursor>Chat on WhatsApp</a>
-            <a href={`mailto:${site.email}`} className="btn-outline" data-cursor>{site.email}</a>
+            <MagneticButton href={waLink()} target="_blank" rel="noreferrer noopener" className="btn-dark">Chat on WhatsApp</MagneticButton>
+            <MagneticButton href={`mailto:${site.email}`} className="btn-outline">{site.email}</MagneticButton>
           </div>
         </Reveal>
       </div>

@@ -1,4 +1,4 @@
-import Reveal from './Reveal.jsx';
+import { Reveal, RevealImage } from './anim.jsx';
 import Counter from './Counter.jsx';
 import { stats } from '../data/content.js';
 
@@ -29,11 +29,12 @@ export default function WhyMe() {
       </div>
 
       <div className="container-x mt-16">
-        <Reveal>
-          <div className="overflow-hidden rounded-3xl border-2 border-border" style={{ boxShadow: '8px 10px 0 -1px rgb(var(--border) / 0.9)' }}>
-            <img src="/img/misc/studio-1.jpg" alt="Ian Wanjohi at work" loading="lazy" className="aspect-[16/8] w-full object-cover" />
-          </div>
-        </Reveal>
+        <RevealImage
+          src="/img/misc/studio-1.jpg"
+          alt="Ian Wanjohi at work"
+          ratio="16 / 8"
+          className="overflow-hidden rounded-3xl border-2 border-border"
+        />
 
         <div className="mt-14 grid grid-cols-2 gap-8 border-t border-border/20 pt-12 sm:grid-cols-4">
           {stats.map((s) => (
