@@ -25,6 +25,11 @@ export default function Contact() {
             <MagneticButton href={waLink()} target="_blank" rel="noreferrer noopener" className="btn-dark">Chat on WhatsApp</MagneticButton>
             <MagneticButton href={`mailto:${site.email}`} className="btn-outline">{site.email}</MagneticButton>
           </div>
+          <Reveal delay={0.2}>
+            <p className="mt-6 font-mono text-sm text-muted">
+              Prefer a call? <a href={`tel:${site.phone.replace(/\s/g, '')}`} className="rust-link" data-cursor>{site.phone}</a>
+            </p>
+          </Reveal>
         </Reveal>
       </div>
     </section>
