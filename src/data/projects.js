@@ -1,21 +1,15 @@
-// Data-driven project list. Swap this array for a headless-CMS fetch
-// (Sanity / Contentful / Firebase) without touching any component.
-//
-// Project schema:
-// { id, title, category, description, tags, image, video?, live?, repo?, featured? }
-
-export const categories = ['All', 'Websites', 'Apps', 'Games'];
+// Featured work — uses the real images copied into /public/img/portfolio.
+export const categories = ['All', 'Web Design', 'Development', 'Branding'];
 
 export const projects = [
   {
     id: 'aurora-commerce',
     year: '2024',
     title: 'Aurora Commerce',
-    category: 'Websites',
-    description:
-      'A headless storefront with a scroll-driven product configurator and sub-second navigation.',
+    category: 'Web Design',
+    description: 'A headless storefront with a scroll-driven product configurator and sub-second navigation.',
     tags: ['React', 'GSAP', 'Node', 'Stripe'],
-    image: 'aurora',
+    image: '/img/portfolio/portfolio-1-800.jpg',
     live: 'https://example.com/aurora',
     repo: 'https://github.com/ianwanjohi475',
     featured: true,
@@ -24,38 +18,47 @@ export const projects = [
     id: 'pulse-analytics',
     year: '2024',
     title: 'Pulse Analytics',
-    category: 'Websites',
-    description:
-      'Real-time analytics dashboard visualising millions of events with buttery canvas charts.',
+    category: 'Development',
+    description: 'A real-time analytics dashboard visualising millions of events with buttery canvas charts.',
     tags: ['React', 'D3', 'Canvas', 'TypeScript'],
-    image: 'pulse',
+    image: '/img/portfolio/portfolio-2-800.jpg',
     live: 'https://example.com/pulse',
     repo: 'https://github.com/ianwanjohi475',
     featured: true,
   },
   {
-    id: 'nomad-app',
+    id: 'luxe-geometry',
+    year: '2023',
+    title: 'Luxe Geometry',
+    category: 'Branding',
+    description: 'A brand identity and marketing site for a boutique product studio.',
+    tags: ['Branding', 'Framer Motion', 'Next.js'],
+    image: '/img/portfolio/portfolio-3-800.jpg',
+    live: 'https://example.com/luxe',
+    repo: 'https://github.com/ianwanjohi475',
+    featured: true,
+  },
+  {
+    id: 'nomad-travel',
     year: '2023',
     title: 'Nomad Travel',
-    category: 'Apps',
-    description:
-      'A cross-platform travel companion with offline maps, itinerary sync and playful micro-interactions.',
+    category: 'Development',
+    description: 'A cross-platform travel companion with offline maps and playful micro-interactions.',
     tags: ['React Native', 'Expo', 'Firebase'],
-    image: 'nomad',
+    image: '/img/portfolio/portfolio-4-800.jpg',
     live: 'https://example.com/nomad',
     repo: 'https://github.com/ianwanjohi475',
     featured: false,
   },
   {
-    id: 'mindful-app',
+    id: 'mono-studio',
     year: '2023',
-    title: 'Mindful',
-    category: 'Apps',
-    description:
-      'A meditation app with generative soundscapes and a breathing-guided animation engine.',
-    tags: ['React Native', 'Reanimated', 'Web Audio'],
-    image: 'mindful',
-    live: 'https://example.com/mindful',
+    title: 'Mono Studio',
+    category: 'Web Design',
+    description: 'An editorial portfolio for a photography studio with a fullscreen media grid.',
+    tags: ['Vite', 'GSAP', 'Lenis'],
+    image: '/img/portfolio/portfolio-5-800.jpg',
+    live: 'https://example.com/mono',
     repo: 'https://github.com/ianwanjohi475',
     featured: false,
   },
@@ -63,25 +66,11 @@ export const projects = [
     id: 'orbit-runner',
     year: '2022',
     title: 'Orbit Runner',
-    category: 'Games',
-    description:
-      'A browser endless-runner set in orbit, built on a custom ECS with 60fps physics.',
+    category: 'Development',
+    description: 'A browser endless-runner set in orbit, built on a custom engine at 60fps.',
     tags: ['Canvas', 'Web Audio', 'Web Workers'],
-    image: 'orbit',
+    image: '/img/portfolio/portfolio-6-800.jpg',
     live: 'https://example.com/orbit',
-    repo: 'https://github.com/ianwanjohi475',
-    featured: true,
-  },
-  {
-    id: 'pixel-forge',
-    year: '2022',
-    title: 'Pixel Forge',
-    category: 'Games',
-    description:
-      'A multiplayer pixel-art sandbox with authoritative server netcode and rollback.',
-    tags: ['Node', 'WebSockets', 'Canvas'],
-    image: 'pixel',
-    live: 'https://example.com/pixel',
     repo: 'https://github.com/ianwanjohi475',
     featured: false,
   },
