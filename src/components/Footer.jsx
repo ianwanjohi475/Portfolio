@@ -1,63 +1,39 @@
 import Socials from './Socials.jsx';
-import { site } from '../data/site.js';
+import { site, waLink } from '../data/site.js';
 
-const columns = [
-  {
-    title: 'Explore',
-    links: [
-      { label: 'Projects', href: '#work' },
-      { label: 'About', href: '#about' },
-      { label: 'Skills', href: '#skills' },
-      { label: 'Testimonials', href: '#testimonials' },
-    ],
-  },
-  {
-    title: 'Connect',
-    links: [
-      { label: 'GitHub', href: site.socials.github },
-      { label: 'LinkedIn', href: site.socials.linkedin },
-      { label: 'X / Twitter', href: site.socials.x },
-      { label: 'Email', href: `mailto:${site.email}` },
-    ],
-  },
+const cols = [
+  { title: 'Explore', links: [
+    { label: 'Work', href: '#work' }, { label: 'About', href: '#about' },
+    { label: 'Services', href: '#services' }, { label: 'Awards', href: '#awards' },
+  ] },
+  { title: 'Sitemap', links: [
+    { label: 'Testimonials', href: '#testimonials' }, { label: 'Contact', href: '#contact' },
+    { label: 'Resume', href: site.resume }, { label: 'GitHub', href: site.socials.github },
+  ] },
 ];
 
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-border py-16">
+    <footer className="mt-10 border-t border-border/25 pt-20">
       <div className="container-x">
-        <div className="grid gap-12 md:grid-cols-[1.6fr_1fr_1fr]">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
           <div>
-            <a href="#hero" className="flex items-center gap-2.5" aria-label={`${site.name} — home`}>
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-white font-display text-base text-teal-ink shadow-sm">
-                IW
-              </span>
-              <span className="font-display text-lg">Ian Wanjohi</span>
+            <h2 className="font-display text-4xl font-bold leading-tight">
+              Ready to push<br />beyond limits?
+            </h2>
+            <a href={waLink()} target="_blank" rel="noreferrer noopener" className="btn-dark mt-7" data-cursor>
+              Let's Connect ✉
             </a>
-            <p className="mt-4 max-w-xs text-sm text-muted">
-              Creative developer building fast, professional web experiences.
-              Available for freelance & collaborations.
-            </p>
-            <div className="mt-5">
-              <Socials />
-            </div>
           </div>
 
-          {columns.map((col) => (
-            <div key={col.title}>
-              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted">
-                {col.title}
-              </p>
+          {cols.map((c) => (
+            <div key={c.title}>
+              <p className="mb-4 font-mono text-xs uppercase tracking-widest text-muted">{c.title}</p>
               <ul className="space-y-3">
-                {col.links.map((l) => (
+                {c.links.map((l) => (
                   <li key={l.label}>
-                    <a
-                      href={l.href}
-                      target={l.href.startsWith('#') ? undefined : '_blank'}
-                      rel={l.href.startsWith('#') ? undefined : 'noreferrer noopener'}
-                      className="text-fg/70 transition hover:text-teal-bright"
-                    >
+                    <a href={l.href} target={l.href.startsWith('#') ? undefined : '_blank'} rel={l.href.startsWith('#') ? undefined : 'noreferrer noopener'} className="rust-link text-fg/80 hover:!text-rust" data-cursor>
                       {l.label}
                     </a>
                   </li>
@@ -65,15 +41,18 @@ export default function Footer() {
               </ul>
             </div>
           ))}
+
+          <div>
+            <p className="mb-4 font-mono text-xs uppercase tracking-widest text-muted">Contact</p>
+            <p className="text-fg/80">Nairobi, Kenya</p>
+            <a href={`mailto:${site.email}`} className="mt-2 block rust-link" data-cursor>{site.email}</a>
+            <div className="mt-5"><Socials /></div>
+          </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 sm:flex-row">
-          <p className="text-sm text-muted">
-            © {year} Ian Wanjohi. Built with React, Vite &amp; GSAP.
-          </p>
-          <a href="#hero" className="text-sm text-muted transition hover:text-fg">
-            Back to top ↑
-          </a>
+        <div className="mt-16 flex flex-col items-center justify-between gap-3 border-t border-border/20 py-6 text-sm text-muted sm:flex-row">
+          <p>© {year} Ian Wanjohi. All rights reserved.</p>
+          <a href="#hero" className="hover:text-fg" data-cursor>Back to top ↑</a>
         </div>
       </div>
     </footer>

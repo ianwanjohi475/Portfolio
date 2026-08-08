@@ -5,43 +5,32 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Semantic tokens driven by CSS vars — flip per theme (see index.css)
+        // Semantic tokens (theme-aware via CSS vars — see index.css)
         bg: 'rgb(var(--bg) / <alpha-value>)',
         fg: 'rgb(var(--fg) / <alpha-value>)',
         muted: 'rgb(var(--muted) / <alpha-value>)',
         card: 'rgb(var(--card) / <alpha-value>)',
         border: 'rgb(var(--border) / <alpha-value>)',
-        // Handshake-style palette: lime accent + deep teal-forest + sage.
-        // (Kept under the `teal` key so existing token classes keep working.)
-        teal: {
-          bright: '#3ddc84', // emerald green — the small-accent colour
-          400: '#7fd0a0', // soft green
-          500: '#3f9e6a', // mid green
-          600: '#2f5645', // deep teal-green
-          700: '#1f3f36', // forest
-          ink: '#0c2016', // dark text placed on light surfaces / green
-        },
+        // Hektor palette
+        rust: { DEFAULT: '#9d2e13', hover: '#d5350e' },
+        cream: '#e9e6de',
+        ink: '#16171a',
       },
       fontFamily: {
-        display: ['"Archivo Black"', 'system-ui', 'sans-serif'],
-        heavy: ['Archivo', 'system-ui', 'sans-serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        // Everything is monospace, Hektor-style
+        display: ['"Cascadia Mono"', '"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        sans: ['"Cascadia Mono"', '"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        mono: ['"Cascadia Mono"', '"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       keyframes: {
-        floaty: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
-        },
-        blob: {
-          '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
-          '33%': { transform: 'translate(4%, -6%) scale(1.08)' },
-          '66%': { transform: 'translate(-4%, 4%) scale(0.96)' },
-        },
+        marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
+        marqueeRev: { '0%': { transform: 'translateX(-50%)' }, '100%': { transform: 'translateX(0)' } },
+        floaty: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
       },
       animation: {
+        marquee: 'marquee 24s linear infinite',
+        marqueeRev: 'marqueeRev 24s linear infinite',
         floaty: 'floaty 6s ease-in-out infinite',
-        blob: 'blob 18s ease-in-out infinite',
       },
     },
   },

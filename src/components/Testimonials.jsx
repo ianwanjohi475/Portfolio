@@ -1,50 +1,43 @@
 import Reveal from './Reveal.jsx';
 import { testimonials } from '../data/content.js';
-
-const initials = (name) =>
-  name.split(' ').map((w) => w[0]).join('').slice(0, 2).toUpperCase();
+import { site } from '../data/site.js';
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="scroll-mt-28 py-24">
-      <div className="container-x">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <Reveal>
-            <div>
-              <p className="eyebrow">Kind words</p>
-              <h2 className="section-title">
-                What clients <span className="text-teal-grad">say</span>
-              </h2>
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="max-w-sm text-muted">
-              Selected feedback from founders and teams I've partnered with.
-            </p>
-          </Reveal>
-        </div>
-
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+    <section id="testimonials" className="scroll-mt-24 py-24">
+      <div className="container-x grid gap-12 lg:grid-cols-[1.2fr_0.8fr]">
+        {/* cards */}
+        <div className="order-2 space-y-6 lg:order-1">
           {testimonials.map((t, i) => (
-            <Reveal key={t.name} delay={i * 0.08}>
-              <figure className="card group flex h-full flex-col p-7">
-                <div className="absolute inset-0 grid-tex opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                <div className="relative flex flex-1 flex-col">
-                  <span className="font-display text-5xl leading-none text-teal-500/40" aria-hidden="true">
-                    &ldquo;
-                  </span>
-                  <blockquote className="mt-2 flex-1 text-fg/85">{t.quote}</blockquote>
-                  <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-5">
-                    <span className="mono-tile h-11 w-11 text-sm">{initials(t.name)}</span>
-                    <span>
-                      <span className="block font-display text-base">{t.name}</span>
-                      <span className="block text-sm text-muted">{t.title}</span>
-                    </span>
-                  </figcaption>
-                </div>
+            <Reveal key={t.name} delay={(i % 2) * 0.08}>
+              <figure className="rounded-3xl border border-border/25 bg-card p-8">
+                <span className="font-display text-4xl leading-none text-rust" aria-hidden="true">“</span>
+                <blockquote className="mt-2 text-xl italic leading-relaxed">{t.quote}</blockquote>
+                <figcaption className="mt-6 text-sm">
+                  <span className="text-fg">— {t.name}</span>
+                  <span className="text-muted">, {t.title}</span>
+                </figcaption>
               </figure>
             </Reveal>
           ))}
+        </div>
+
+        {/* sticky heading */}
+        <div className="order-1 lg:order-2">
+          <div className="lg:sticky lg:top-28">
+            <Reveal>
+              <p className="eyebrow">Testimonials</p>
+              <h2 className="font-display text-6xl font-bold leading-[0.95] sm:text-7xl">
+                What<br />They<br />Say
+              </h2>
+              <p className="mt-6 max-w-xs text-muted">
+                Genuine words from the people I've had the pleasure to work with.
+              </p>
+              <a href={`mailto:${site.email}`} className="btn-outline mt-8" data-cursor>
+                Work with me
+              </a>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>
