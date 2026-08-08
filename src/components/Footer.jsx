@@ -46,6 +46,7 @@ export default function Footer() {
             <p className="mb-4 font-mono text-xs uppercase tracking-widest text-muted">Contact</p>
             <p className="text-fg/80">Nairobi, Kenya</p>
             <a href={`mailto:${site.email}`} className="mt-2 block rust-link" data-cursor>{site.email}</a>
+            <a href={`tel:${site.phone.replace(/\s/g, '')}`} className="mt-1 block rust-link" data-cursor>{site.phone}</a>
             <div className="mt-5"><Socials /></div>
           </div>
         </div>

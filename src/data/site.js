@@ -4,11 +4,12 @@ export const site = {
   role: 'Creative Developer',
   location: 'Nairobi, Kenya',
   email: 'hello@ianwanjohi.dev',
-  // WhatsApp: international format, digits only (no +, spaces or dashes).
-  // TODO: replace with your real number.
-  whatsapp: '254700000000',
+  phone: '+254 758 950 370',
+  // WhatsApp: international format, digits only (0758950370 -> 254758950370)
+  whatsapp: '254758950370',
   whatsappMessage: "Hi Ian, I saw your portfolio and I'd love to work with you.",
   resume: '/resume.pdf', // lives in /public
+  photo: '/img/ian.jpg', // your headshot — replace this file in /public/img
   socials: {
     github: 'https://github.com/ianwanjohi475',
     linkedin: 'https://www.linkedin.com/in/ianwanjohi',

@@ -36,12 +36,14 @@ body {
 @layer components {
   .container-x { @apply mx-auto w-full max-w-7xl px-5 sm:px-8; }
 
-  /* "( label )" eyebrow, Hektor-style */
+  /* eyebrow with a rust marker */
   .eyebrow {
-    @apply mb-6 inline-block font-mono text-sm tracking-wide text-fg/80;
+    @apply mb-6 inline-flex items-center gap-2 font-mono text-sm uppercase tracking-[0.15em] text-fg/70;
   }
-  .eyebrow::before { content: '( '; }
-  .eyebrow::after { content: ' )'; }
+  .eyebrow::before {
+    content: '';
+    @apply inline-block h-1.5 w-1.5 rounded-full bg-rust;
+  }
 
   /* Huge display heading */
   .mega {
