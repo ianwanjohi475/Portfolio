@@ -75,8 +75,10 @@ export function MaskText({ text, as = 'h2', className = '', delay = 0 }) {
   );
 }
 
-/** Image that reveals with a clip-path wipe + subtle scale on scroll. */
-export function RevealImage({ src, alt = '', className = '', imgClass = '', ratio }) {
+/** Image that reveals with a clip-path wipe + subtle scale on scroll.
+ *  `full` renders the image at its natural height (good for tall full-page
+ *  screenshots); otherwise it fills the given `ratio`. */
+export function RevealImage({ src, alt = '', className = '', imgClass = '', ratio, full = false }) {
   const wrap = useRef(null);
   const img = useRef(null);
   useEffect(() => {
@@ -86,21 +88,21 @@ export function RevealImage({ src, alt = '', className = '', imgClass = '', rati
     if (prefersReduced()) return;
     const ctx = gsap.context(() => {
       gsap.set(w, { clipPath: 'inset(0 0 100% 0)' });
-      gsap.set(im, { scale: 1.25 });
+      if (!full) gsap.set(im, { scale: 1.25 });
       const tl = gsap.timeline({ scrollTrigger: { trigger: w, start: 'top 85%', once: true } });
-      tl.to(w, { clipPath: 'inset(0 0 0% 0)', duration: 1.1, ease: 'power3.inOut' })
-        .to(im, { scale: 1, duration: 1.4, ease: 'power3.out' }, 0);
+      tl.to(w, { clipPath: 'inset(0 0 0% 0)', duration: 1.1, ease: 'power3.inOut' });
+      if (!full) tl.to(im, { scale: 1, duration: 1.4, ease: 'power3.out' }, 0);
     }, w);
     return () => ctx.revert();
-  }, [src]);
+  }, [src, full]);
   return (
-    <div ref={wrap} className={className} style={ratio ? { aspectRatio: ratio } : undefined}>
+    <div ref={wrap} className={className} style={!full && ratio ? { aspectRatio: ratio } : undefined}>
       <img
         ref={img}
         src={src}
         alt={alt}
         loading="lazy"
-        className={`h-full w-full object-cover ${imgClass}`}
+        className={full ? `block w-full ${imgClass}` : `h-full w-full object-cover ${imgClass}`}
       />
     </div>
   );

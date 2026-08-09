@@ -51,6 +51,7 @@ export default function ProjectPage({ id }) {
           src={p.image}
           alt={p.title}
           ratio="16 / 9"
+          imgClass="object-top"
           className="overflow-hidden rounded-3xl border-2 border-border"
         />
       </div>
@@ -76,14 +77,14 @@ export default function ProjectPage({ id }) {
         </div>
       </section>
 
-      {/* gallery */}
+      {/* gallery — full page screenshots */}
       <section className="container-x mt-20 space-y-8">
         {p.gallery.map((src, i) => (
           <RevealImage
             key={i}
             src={src}
-            alt={`${p.title} — ${i + 1}`}
-            ratio={i % 2 ? '16 / 10' : '16 / 8'}
+            alt={`${p.title} — full page ${i + 1}`}
+            full
             className="overflow-hidden rounded-3xl border-2 border-border"
           />
         ))}
