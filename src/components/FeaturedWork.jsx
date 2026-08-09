@@ -56,8 +56,17 @@ export default function FeaturedWork() {
             className={`group relative w-[85%] shrink-0 snap-center rounded-3xl border-2 border-border bg-card p-3 transition-transform duration-300 sm:w-[62%] lg:w-[46%] ${i % 2 ? 'rotate-[0.6deg]' : '-rotate-[0.6deg]'} hover:!rotate-0`}
             style={{ boxShadow: '6px 8px 0 -1px rgb(var(--border) / 0.9)' }}
           >
-            <div className="overflow-hidden rounded-2xl border border-border/60">
-              <img src={p.image} alt={p.title} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
+            {/* Full-page shot that "scrolls" the site on hover */}
+            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-border/60">
+              <img
+                src={p.image}
+                alt={p.title}
+                loading="lazy"
+                className="h-full w-full object-cover object-top [transition:object-position_3.5s_ease] group-hover:object-bottom"
+              />
+              <span className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-fg/85 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-bg opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                Hover to scroll
+              </span>
             </div>
             <div className="flex items-center justify-between gap-3 px-2 pb-1 pt-4">
               <div>
