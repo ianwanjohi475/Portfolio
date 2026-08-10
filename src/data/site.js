@@ -1,7 +1,7 @@
 // Central place for personal + contact details. Edit these once.
 export const site = {
   name: 'Ian Wanjohi',
-  role: 'Creative Developer',
+  role: 'Fullstack Developer',
   location: 'Nairobi, Kenya',
   email: 'hello@ianwanjohi.dev',
   phone: '+254 758 950 370',

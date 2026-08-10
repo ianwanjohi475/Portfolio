@@ -4,7 +4,7 @@ import { site, waLink } from '../data/site.js';
 const cols = [
   { title: 'Explore', links: [
     { label: 'Work', href: '#work' }, { label: 'About', href: '#about' },
-    { label: 'Services', href: '#services' }, { label: 'Awards', href: '#awards' },
+    { label: 'Services', href: '#services' }, { label: 'Contact', href: '#contact' },
   ] },
   { title: 'Sitemap', links: [
     { label: 'Testimonials', href: '#testimonials' }, { label: 'Contact', href: '#contact' },

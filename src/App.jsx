@@ -9,7 +9,6 @@ import FeaturedWork from './components/FeaturedWork.jsx';
 import WhyMe from './components/WhyMe.jsx';
 import Services from './components/Services.jsx';
 import Marquee from './components/Marquee.jsx';
-import Awards from './components/Awards.jsx';
 import Testimonials from './components/Testimonials.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
@@ -56,7 +55,6 @@ export default function App() {
           <WhyMe />
           <Services />
           <Marquee />
-          <Awards />
           <Testimonials />
           <Contact />
         </main>

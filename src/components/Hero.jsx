@@ -10,7 +10,7 @@ const socials = [
   { href: site.socials.x, label: 'X', Icon: XIcon },
 ];
 
-const lines = ['Fast, striking', 'websites'];
+const lines = ["I'm Ian"];
 
 export default function Hero() {
   const root = useRef(null);
@@ -45,7 +45,7 @@ export default function Hero() {
       <div className="container-x grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
         {/* text */}
         <div>
-          <p className="hero-fade eyebrow">{site.name}</p>
+          <p className="hero-fade eyebrow">{site.role} · {site.location}</p>
           <h1 className="mega">
             {lines.map((l, i) => (
               <span key={i} className="block overflow-hidden">
@@ -53,17 +53,16 @@ export default function Hero() {
               </span>
             ))}
             <span className="block overflow-hidden">
-              <span className="hero-line inline-block will-change-transform">built to be</span>
-            </span>
-            <span className="block overflow-hidden">
-              <span className="hero-line inline-block italic text-rust will-change-transform">remembered.</span>
+              <span className="hero-line inline-block italic text-rust will-change-transform">Wanjohi.</span>
             </span>
           </h1>
 
-          <p className="hero-fade mt-8 max-w-md text-lg text-muted">
-            I'm Ian Wanjohi — a creative developer in Nairobi. I design and build
-            high-performance websites and web apps that look sharp, load fast and
-            help brands grow.
+          <p className="hero-fade mt-6 max-w-lg font-display text-2xl font-bold leading-snug sm:text-3xl">
+            A fullstack developer who builds web and mobile apps.
+          </p>
+          <p className="hero-fade mt-5 max-w-md text-lg text-muted">
+            I enjoy turning ideas into things people can actually use, and I work
+            on both the design and the code.
           </p>
 
           <div className="hero-fade mt-9 flex flex-wrap items-center gap-4">

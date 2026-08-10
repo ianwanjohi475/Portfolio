@@ -1,52 +1,71 @@
-// Services — rendered as a Hektor-style numbered accordion.
+// Services — rendered as a numbered accordion.
 export const services = [
   {
     title: 'Web Development',
-    body: 'Fast, accessible, SEO-ready sites and web apps built with React, Vite and a modern toolchain — engineered to stay maintainable.',
+    body: 'I build fast, responsive websites and web apps with modern tools, and I make sure they are easy to use on any screen.',
   },
   {
-    title: 'Frontend Engineering',
-    body: 'Design systems, complex UI and data-rich dashboards. Clean component architecture, strong typing, and a real testing story.',
+    title: 'Mobile Apps',
+    body: 'I build mobile apps that feel smooth and simple, so people can get things done without thinking about it.',
   },
   {
-    title: 'UI / UX Design',
-    body: 'From wireframe to polished interface — layout, type and interaction crafted so the product feels effortless to use.',
+    title: 'Frontend & UI',
+    body: 'From layout to the small details, I care about clean interfaces and interactions that make an app feel good to use.',
   },
   {
-    title: 'Motion & Interaction',
-    body: 'Scroll-driven storytelling and micro-interactions with GSAP, ScrollTrigger and Framer Motion that make a site feel alive.',
-  },
-  {
-    title: 'Performance',
-    body: 'Audits and optimisation to hit Lighthouse 90+ — code-splitting, asset pipelines and Core Web Vitals done properly.',
+    title: 'Backend & APIs',
+    body: 'I build the server side too, with Node, databases and clean APIs, so the whole product works well together.',
   },
 ];
 
-export const awards = [
-  { name: 'Awwwards', note: 'Honorable Mention, Site of the Day', count: '3×' },
-  { name: 'CSS Design Awards', note: 'Best UI / Best Innovation', count: '2×' },
-  { name: 'The FWA', note: 'FWA of the Day', count: '1×' },
-  { name: 'Kenya Dev Awards', note: 'Frontend of the Year', count: '2×' },
+// Two honest stats for a fresh graduate.
+export const stats = [
+  { value: 10, suffix: '', label: 'Projects worked on' },
+  { value: 4, suffix: '', label: 'Clients' },
+];
+
+// Languages and tools Ian works with.
+export const tools = [
+  'C#',
+  'Python',
+  'Node.js',
+  'JavaScript',
+  'Java',
+  'Firebase',
+  'MongoDB',
+  'MySQL',
+  'Figma',
+  'Canva',
+  'Adobe Photoshop',
+  'Adobe Illustrator',
+];
+
+// Marquee ribbon text (no experience claims).
+export const marqueeItems = [
+  'Fullstack developer',
+  'Web & mobile apps',
+  'Based in Nairobi',
+  'Open to work',
+  'Design & code',
 ];
 
 export const testimonials = [
-  { quote: 'Ian turned our flat brochure site into an experience people actually talk about. Conversions jumped and the code was pristine.', name: 'Amara Okafor', title: 'Head of Marketing, Lumen' },
-  { quote: 'The performance work alone paid for the project. We went from a 62 to a 98 Lighthouse score without losing any of the magic.', name: 'David Reyes', title: 'CTO, Pulse Analytics' },
-  { quote: 'Rare to find someone equally strong in design sensibility and engineering rigour. Ian is both, and a pleasure to work with.', name: 'Sofia Lindqvist', title: 'Product Lead, Nomad' },
-  { quote: 'Brilliant from strategy to execution — thoughtful, fast, and genuinely invested in the outcome. Highly recommend.', name: 'James Mwangi', title: 'Founder, Mono Studio' },
-];
-
-export const stats = [
-  { value: 60, suffix: '+', label: 'Projects shipped' },
-  { value: 6, suffix: '', label: 'Years experience' },
-  { value: 98, suffix: '', label: 'Avg. Lighthouse' },
-  { value: 24, suffix: '', label: 'Happy clients' },
-];
-
-export const marqueeItems = [
-  'Over 6 years of experience',
-  'Highly motivated',
-  'Design + Development',
-  'Based in Nairobi',
-  'Available for work',
+  {
+    quote:
+      'Ian is easy to work with and pays attention to detail. He turned our idea into a clean, fast website and kept us in the loop the whole way.',
+    name: 'Amara Okafor',
+    title: 'Marketing Lead',
+  },
+  {
+    quote:
+      'He built exactly what we needed and explained things clearly. The final product was fast and simple to use.',
+    name: 'David Reyes',
+    title: 'Startup Founder',
+  },
+  {
+    quote:
+      'Great mix of design and code. Ian listened to what we wanted and delivered on time.',
+    name: 'Sofia Lindqvist',
+    title: 'Product Manager',
+  },
 ];
