@@ -62,7 +62,7 @@ export default function FeaturedWork() {
                 src={p.image}
                 alt={p.title}
                 loading="lazy"
-                className="h-full w-full object-cover object-top [transition:object-position_3.5s_ease] group-hover:object-bottom"
+                className="h-full w-full object-cover object-top [transition:object-position_6s_ease] group-hover:object-bottom"
               />
               <span className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-fg/85 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-bg opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 Hover to scroll
