@@ -1,24 +1,24 @@
 import { Reveal, RevealImage } from './anim.jsx';
 import Counter from './Counter.jsx';
-import { stats } from '../data/content.js';
+import { stats, tools } from '../data/content.js';
 
 export default function WhyMe() {
   return (
     <section id="about" className="scroll-mt-24 py-24">
       <div className="container-x text-center">
         <Reveal>
-          <p className="eyebrow">Why work with me</p>
+          <p className="eyebrow">A little about me</p>
         </Reveal>
         <Reveal delay={0.05}>
           <h2 className="mx-auto max-w-4xl font-display text-3xl font-bold leading-[1.15] sm:text-5xl">
-            I'm not an agency — I'm a hands-on partner who designs, builds and
-            ships the whole thing, invested in the outcome.
+            I like building things that are simple to use and nice to look at.
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
           <p className="mx-auto mt-6 max-w-xl text-muted">
-            From strategy to execution, I blend design thinking with engineering
-            to create work that's both beautiful and genuinely effective.
+            I recently finished my studies and I work as a fullstack developer.
+            I handle both the design and the code, and I care about the small
+            details that make an app feel good to use.
           </p>
         </Reveal>
         <Reveal delay={0.15}>
@@ -36,10 +36,10 @@ export default function WhyMe() {
           className="overflow-hidden rounded-3xl border-2 border-border"
         />
 
-        <div className="mt-14 grid grid-cols-2 gap-8 border-t border-border/20 pt-12 sm:grid-cols-4">
+        <div className="mt-14 grid grid-cols-2 gap-8 border-y border-border/20 py-12 sm:mx-auto sm:max-w-xl">
           {stats.map((s) => (
             <Reveal key={s.label}>
-              <div>
+              <div className="text-center">
                 <p className="font-display text-4xl font-bold sm:text-5xl">
                   <Counter value={s.value} suffix={s.suffix} />
                 </p>
@@ -47,6 +47,20 @@ export default function WhyMe() {
               </div>
             </Reveal>
           ))}
+        </div>
+
+        {/* tools & languages */}
+        <div className="mt-14 text-center">
+          <Reveal>
+            <p className="eyebrow">Tools I work with</p>
+          </Reveal>
+          <Reveal stagger={0.04} className="mt-4 flex flex-wrap justify-center gap-2.5">
+            {tools.map((t) => (
+              <span key={t} className="rounded-full border border-border/40 px-4 py-2 text-sm text-fg/80 transition hover:border-rust hover:text-rust" data-cursor>
+                {t}
+              </span>
+            ))}
+          </Reveal>
         </div>
       </div>
     </section>
