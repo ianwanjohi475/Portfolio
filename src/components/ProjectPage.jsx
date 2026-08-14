@@ -58,14 +58,12 @@ export default function ProjectPage({ id }) {
               Scan or pick a file, read its text, and save it as Word, Excel,
               PDF or plain text. Everything runs on the device.
             </p>
+            <p className="mt-3 font-mono text-sm text-muted">Swipe through the screens →</p>
             <div className="mt-7 flex flex-wrap gap-3">
-              {p.demo && (
-                <a href={p.demo} target="_blank" rel="noreferrer noopener" className="btn-dark" data-cursor>Open the app ↗</a>
-              )}
-              <a href={p.repo} target="_blank" rel="noreferrer noopener" className="btn-outline" data-cursor>View code</a>
+              <a href={p.repo} target="_blank" rel="noreferrer noopener" className="btn-dark" data-cursor>View code ↗</a>
             </div>
           </div>
-          <PhoneFrame poster={p.image} title={p.title} />
+          <PhoneFrame screens={p.screens} title={p.title} />
         </section>
       ) : (
         <div className="container-x mt-14">
@@ -101,15 +99,7 @@ export default function ProjectPage({ id }) {
       </section>
 
       {/* gallery — phone screens for mobile, full pages otherwise */}
-      {p.type === 'mobile' ? (
-        <section className="container-x mt-20 grid grid-cols-1 gap-10 sm:grid-cols-3">
-          {p.gallery.map((src, i) => (
-            <Reveal key={i} delay={(i % 3) * 0.1}>
-              <PhoneFrame poster={src} title={`${p.title} screen ${i + 1}`} className="!max-w-[240px]" />
-            </Reveal>
-          ))}
-        </section>
-      ) : (
+      {p.type !== 'mobile' && p.gallery && (
         <section className="container-x mt-20 space-y-8">
           {p.gallery.map((src, i) => (
             <RevealImage

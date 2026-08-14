@@ -1,100 +1,118 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 /**
- * A phone mockup.
- *  - default: shows a screenshot poster.
- *  - `autoLoad`: mounts the real app in an iframe as soon as the phone scrolls
- *    into view, so the live app "just runs" (loaded lazily to keep the page fast).
- *  - `interactive`: shows a tap-to-launch button instead of auto-loading.
+ * A phone mockup showing hardcoded app screenshots. When given multiple
+ * `screens` it's a swipeable gallery (touch swipe, mouse drag, arrows, dots).
+ * No iframe / live app — just images, so it always works.
  */
-export default function PhoneFrame({
-  poster,
-  src,
-  title = 'App preview',
-  interactive = false,
-  autoLoad = false,
-  className = '',
-}) {
-  const wrap = useRef(null);
-  const [mounted, setMounted] = useState(false);
-  const [loaded, setLoaded] = useState(false);
+export default function PhoneFrame({ screens, poster, title = 'App', className = '' }) {
+  const imgs = (screens && screens.length ? screens : poster ? [poster] : []).filter(Boolean);
+  const track = useRef(null);
+  const [idx, setIdx] = useState(0);
+  const multi = imgs.length > 1;
 
-  // auto-mount the iframe when the phone enters the viewport
-  useEffect(() => {
-    if (!autoLoad || !src || mounted) return;
-    const el = wrap.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setMounted(true);
-          io.disconnect();
-        }
-      },
-      { rootMargin: '200px' },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [autoLoad, src, mounted]);
+  const goTo = (i) => {
+    const t = track.current;
+    if (!t) return;
+    const n = Math.max(0, Math.min(imgs.length - 1, i));
+    const child = t.children[n];
+    if (child) t.scrollTo({ left: child.offsetLeft, behavior: 'smooth' });
+  };
+  const onScroll = () => {
+    const t = track.current;
+    if (!t) return;
+    setIdx(Math.round(t.scrollLeft / t.clientWidth));
+  };
 
-  const showIframe = mounted && src;
+  // mouse drag-to-swipe (desktop)
+  const drag = useRef({ down: false, x: 0, left: 0 });
+  const onDown = (e) => {
+    const t = track.current;
+    drag.current = { down: true, x: e.clientX, left: t.scrollLeft };
+  };
+  const onMove = (e) => {
+    if (!drag.current.down) return;
+    track.current.scrollLeft = drag.current.left - (e.clientX - drag.current.x);
+  };
+  const onUp = () => {
+    if (!drag.current.down) return;
+    drag.current.down = false;
+    goTo(Math.round(track.current.scrollLeft / track.current.clientWidth));
+  };
 
   return (
-    <div ref={wrap} className={`relative mx-auto w-full max-w-[340px] ${className}`} style={{ aspectRatio: '9 / 19' }}>
-      {/* body */}
-      <div className="absolute inset-0 rounded-[2.6rem] bg-[#0d0d10] p-[0.5rem] shadow-2xl shadow-black/40 ring-1 ring-white/10">
-        {/* screen */}
-        <div className="relative h-full w-full overflow-hidden rounded-[2.15rem] bg-white">
-          {/* notch / island */}
-          <div className="pointer-events-none absolute left-1/2 top-2 z-30 h-5 w-24 -translate-x-1/2 rounded-full bg-black" />
+    <div className={`mx-auto w-full max-w-[340px] ${className}`}>
+      {/* phone body */}
+      <div className="relative" style={{ aspectRatio: '9 / 19' }}>
+        <div className="absolute inset-0 rounded-[2.6rem] bg-[#0d0d10] p-[0.5rem] shadow-2xl shadow-black/40 ring-1 ring-white/10">
+          <div className="relative h-full w-full overflow-hidden rounded-[2.15rem] bg-white">
+            {/* notch */}
+            <div className="pointer-events-none absolute left-1/2 top-2 z-30 h-5 w-24 -translate-x-1/2 rounded-full bg-black" />
 
-          {/* poster stays underneath as a loading frame / fallback */}
-          {poster && (
-            <img
-              src={poster}
-              alt={title}
-              loading="lazy"
-              className={`absolute inset-0 h-full w-full object-cover object-top transition-opacity duration-500 ${
-                showIframe && loaded ? 'opacity-0' : 'opacity-100'
+            {/* screenshot track */}
+            <div
+              ref={track}
+              onScroll={onScroll}
+              onMouseDown={onDown}
+              onMouseMove={onMove}
+              onMouseUp={onUp}
+              onMouseLeave={onUp}
+              className={`flex h-full w-full snap-x snap-mandatory overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${
+                multi ? 'cursor-grab active:cursor-grabbing' : ''
               }`}
-            />
-          )}
-
-          {showIframe && (
-            <iframe
-              src={src}
-              title={`${title} — live`}
-              onLoad={() => setLoaded(true)}
-              className="absolute inset-0 h-full w-full border-0"
-              allow="clipboard-write; camera; fullscreen"
-            />
-          )}
-
-          {/* loading hint while the app boots */}
-          {showIframe && !loaded && (
-            <div className="pointer-events-none absolute inset-x-0 bottom-4 z-20 flex justify-center">
-              <span className="rounded-full bg-ink/85 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-white">
-                Loading live app…
-              </span>
-            </div>
-          )}
-
-          {/* tap-to-launch (only when not auto-loading) */}
-          {interactive && !autoLoad && !mounted && src && (
-            <button
-              onClick={() => setMounted(true)}
-              className="group absolute inset-0 z-10 grid place-items-center bg-black/25 transition hover:bg-black/35"
-              aria-label="Launch live demo"
-              data-cursor
             >
-              <span className="flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-ink shadow-lg transition group-hover:scale-105">
-                <span className="grid h-6 w-6 place-items-center rounded-full bg-rust text-white">▶</span>
-                Launch live demo
-              </span>
-            </button>
-          )}
+              {imgs.map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt={`${title} screen ${i + 1}`}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  draggable={false}
+                  className="h-full w-full flex-none snap-center select-none object-cover object-top"
+                />
+              ))}
+            </div>
+
+            {/* arrows */}
+            {multi && (
+              <>
+                <button
+                  onClick={() => goTo(idx - 1)}
+                  className="absolute left-2 top-1/2 z-20 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-black/45 text-white backdrop-blur transition hover:bg-black/70 disabled:opacity-0"
+                  aria-label="Previous screen"
+                  disabled={idx === 0}
+                  data-cursor
+                >
+                  ‹
+                </button>
+                <button
+                  onClick={() => goTo(idx + 1)}
+                  className="absolute right-2 top-1/2 z-20 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-black/45 text-white backdrop-blur transition hover:bg-black/70 disabled:opacity-0"
+                  aria-label="Next screen"
+                  disabled={idx === imgs.length - 1}
+                  data-cursor
+                >
+                  ›
+                </button>
+              </>
+            )}
+          </div>
         </div>
       </div>
+
+      {/* dots */}
+      {multi && (
+        <div className="mt-5 flex justify-center gap-2">
+          {imgs.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              aria-label={`Go to screen ${i + 1}`}
+              className={`h-2 rounded-full transition-all ${i === idx ? 'w-6 bg-rust' : 'w-2 bg-fg/25'}`}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
