@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { Reveal, MaskText } from './anim.jsx';
+import PhoneFrame from './PhoneFrame.jsx';
 import { projects } from '../data/projects.js';
 
 export default function FeaturedWork() {
@@ -56,18 +57,28 @@ export default function FeaturedWork() {
             className={`group relative w-[85%] shrink-0 snap-center rounded-3xl border-2 border-border bg-card p-3 transition-transform duration-300 sm:w-[62%] lg:w-[46%] ${i % 2 ? 'rotate-[0.6deg]' : '-rotate-[0.6deg]'} hover:!rotate-0`}
             style={{ boxShadow: '6px 8px 0 -1px rgb(var(--border) / 0.9)' }}
           >
-            {/* Full-page screenshot that scrolls on hover */}
-            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-border/60">
-              <img
-                src={p.image}
-                alt={p.title}
-                loading="lazy"
-                className="h-full w-full object-cover object-top [transition:object-position_6s_ease] group-hover:object-bottom"
-              />
-              <span className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-fg/85 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-bg opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                Hover to scroll
-              </span>
-            </div>
+            {p.type === 'mobile' ? (
+              /* Mobile app — phone mockup on a soft backdrop */
+              <div className="relative flex aspect-[16/10] items-end justify-center overflow-hidden rounded-2xl border border-border/60 bg-gradient-to-b from-fg/[0.05] to-fg/[0.12]">
+                <PhoneFrame poster={p.image} title={p.title} className="!max-w-[150px] translate-y-6" />
+                <span className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-fg/85 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-bg">
+                  Tap to try live
+                </span>
+              </div>
+            ) : (
+              /* Full-page screenshot that scrolls on hover */
+              <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-border/60">
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover object-top [transition:object-position_6s_ease] group-hover:object-bottom"
+                />
+                <span className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-fg/85 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-bg opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  Hover to scroll
+                </span>
+              </div>
+            )}
             <div className="flex items-center justify-between gap-3 px-2 pb-1 pt-4">
               <div>
                 <h3 className="font-display text-2xl font-bold">{p.title}</h3>

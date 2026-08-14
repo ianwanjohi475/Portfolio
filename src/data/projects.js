@@ -1,7 +1,7 @@
 // Real projects. Card images are tall full-page shots so they can "scroll"
 // on hover. Replace the files in /public/img/projects with real screenshots
 // any time (keep the same paths).
-export const categories = ['All', 'Web App', 'Company', 'Real Estate'];
+export const categories = ['All', 'Mobile App', 'Web App', 'Company', 'Real Estate'];
 
 export const projects = [
   {
@@ -53,6 +53,34 @@ export const projects = [
     featured: true,
   },
 ];
+
+// Add Converta (a real, testable mobile app) to the list.
+projects.unshift({
+  id: 'converta',
+  year: '2024',
+  title: 'Converta',
+  subtitle: 'A mobile app that turns documents into editable files.',
+  category: 'Mobile App',
+  type: 'mobile',
+  description:
+    'A React Native app that scans an image or PDF and rebuilds it as an editable Word, Excel, PDF or TXT file, right on the phone.',
+  tags: ['React Native', 'Expo', 'TypeScript', 'Zustand'],
+  image: '/img/projects/converta-3.jpg',
+  gallery: ['/img/projects/converta-1.jpg', '/img/projects/converta-3.jpg', '/img/projects/converta-2.jpg'],
+  demo: '/converta/', // the real app, built to web and hosted with the site
+  client: 'Personal project',
+  role: 'Solo — design & build',
+  services: ['Mobile', 'OCR', 'File generation'],
+  website: 'https://github.com/ianwanjohi475/word',
+  overview: [
+    'Converta takes a photo, a scan or a PDF and turns it into an editable file. You can pick a document, let it read the text and layout, then export it as Word, Excel, PDF or plain text.',
+    'It runs on the phone, so there is no account and nothing is sent to a server of mine. If needed it reads text locally, and it keeps your files and history on the device.',
+    'I built it with React Native and Expo, using Expo Router for navigation, TypeScript, Zustand for state, and SQLite for storage. The same code also runs on the web, which is how you can try it here.',
+  ],
+  live: 'https://github.com/ianwanjohi475/word',
+  repo: 'https://github.com/ianwanjohi475/word',
+  featured: true,
+});
 
 export const getProject = (id) => projects.find((p) => p.id === id);
 export const nextProject = (id) => {
