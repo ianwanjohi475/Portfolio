@@ -46,24 +46,26 @@ export default function ProjectPage({ id }) {
         </Reveal>
       </header>
 
-      {/* hero — live phone for mobile apps, big screenshot otherwise */}
-      {p.type === 'mobile' && p.demo ? (
+      {/* hero — phone screenshot for mobile apps, big screenshot otherwise */}
+      {p.type === 'mobile' ? (
         <section className="container-x mt-14 grid items-center gap-12 rounded-3xl border-2 border-border bg-card p-8 sm:p-12 lg:grid-cols-[1fr_0.9fr]">
           <div>
-            <p className="eyebrow">Try it live</p>
+            <p className="eyebrow">The app</p>
             <h2 className="font-display text-3xl font-bold sm:text-4xl">
-              This is the real app, running in your browser.
+              A document scanner and converter, built for the phone.
             </h2>
             <p className="mt-4 max-w-md text-muted">
-              Converta is a React Native app. I also build it for the web, so it
-              runs right here in the phone, no install needed. Go ahead and use it.
+              Scan or pick a file, read its text, and save it as Word, Excel,
+              PDF or plain text. Everything runs on the device.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <a href={p.demo} target="_blank" rel="noreferrer noopener" className="btn-dark" data-cursor>Open in a new tab ↗</a>
+              {p.demo && (
+                <a href={p.demo} target="_blank" rel="noreferrer noopener" className="btn-dark" data-cursor>Open the app ↗</a>
+              )}
               <a href={p.repo} target="_blank" rel="noreferrer noopener" className="btn-outline" data-cursor>View code</a>
             </div>
           </div>
-          <PhoneFrame poster={p.image} src={p.demo} title={p.title} autoLoad />
+          <PhoneFrame poster={p.image} title={p.title} />
         </section>
       ) : (
         <div className="container-x mt-14">
