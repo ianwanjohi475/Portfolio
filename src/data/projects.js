@@ -65,9 +65,16 @@ projects.unshift({
   description:
     'A React Native app that scans an image or PDF and rebuilds it as an editable Word, Excel, PDF or TXT file, right on the phone.',
   tags: ['React Native', 'Expo', 'TypeScript', 'Zustand'],
-  image: '/img/projects/converta-3.jpg',
-  gallery: ['/img/projects/converta-1.jpg', '/img/projects/converta-3.jpg', '/img/projects/converta-2.jpg'],
-  demo: '/converta/', // the real app, built to web and hosted with the site
+  image: '/img/projects/converta-s2.jpg', // home screen — poster for the card
+  // Swipeable screenshots shown in the phone on the project page.
+  screens: [
+    '/img/projects/converta-s2.jpg',
+    '/img/projects/converta-s3.jpg',
+    '/img/projects/converta-s4.jpg',
+    '/img/projects/converta-s5.jpg',
+    '/img/projects/converta-s6.jpg',
+    '/img/projects/converta-s1.jpg',
+  ],
   client: 'Personal project',
   role: 'Solo — design & build',
   services: ['Mobile', 'OCR', 'File generation'],
@@ -75,7 +82,7 @@ projects.unshift({
   overview: [
     'Converta takes a photo, a scan or a PDF and turns it into an editable file. You can pick a document, let it read the text and layout, then export it as Word, Excel, PDF or plain text.',
     'It runs on the phone, so there is no account and nothing is sent to a server of mine. If needed it reads text locally, and it keeps your files and history on the device.',
-    'I built it with React Native and Expo, using Expo Router for navigation, TypeScript, Zustand for state, and SQLite for storage. The same code also runs on the web, which is how you can try it here.',
+    'I built it with React Native and Expo, using Expo Router for navigation, TypeScript, Zustand for state, and SQLite for storage.',
   ],
   live: 'https://github.com/ianwanjohi475/word',
   repo: 'https://github.com/ianwanjohi475/word',
