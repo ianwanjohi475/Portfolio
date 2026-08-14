@@ -1,5 +1,6 @@
 import { Reveal, MaskText, RevealImage } from './anim.jsx';
 import PhoneFrame from './PhoneFrame.jsx';
+import { DownloadIcon } from './icons.jsx';
 import { getProject, nextProject } from '../data/projects.js';
 
 function Meta({ label, children }) {
@@ -60,7 +61,12 @@ export default function ProjectPage({ id }) {
             </p>
             <p className="mt-3 font-mono text-sm text-muted">Swipe through the screens →</p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <a href={p.repo} target="_blank" rel="noreferrer noopener" className="btn-dark" data-cursor>View code ↗</a>
+              {p.apk && (
+                <a href={p.apk} target="_blank" rel="noreferrer noopener" className="btn-dark" data-cursor>
+                  <DownloadIcon /> Download APK
+                </a>
+              )}
+              <a href={p.repo} target="_blank" rel="noreferrer noopener" className="btn-outline" data-cursor>View code ↗</a>
             </div>
           </div>
           <PhoneFrame screens={p.screens} title={p.title} />
