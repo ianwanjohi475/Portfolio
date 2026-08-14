@@ -55,15 +55,15 @@ export default function ProjectPage({ id }) {
               This is the real app, running in your browser.
             </h2>
             <p className="mt-4 max-w-md text-muted">
-              Converta is a React Native app. I also build it for the web, so you
-              can tap Launch and use it right here, no install needed.
+              Converta is a React Native app. I also build it for the web, so it
+              runs right here in the phone, no install needed. Go ahead and use it.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <a href={p.demo} target="_blank" rel="noreferrer noopener" className="btn-dark" data-cursor>Open in a new tab ↗</a>
               <a href={p.repo} target="_blank" rel="noreferrer noopener" className="btn-outline" data-cursor>View code</a>
             </div>
           </div>
-          <PhoneFrame poster={p.image} src={p.demo} title={p.title} interactive />
+          <PhoneFrame poster={p.image} src={p.demo} title={p.title} autoLoad />
         </section>
       ) : (
         <div className="container-x mt-14">
