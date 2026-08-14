@@ -79,6 +79,10 @@ projects.unshift({
   role: 'Solo — design & build',
   services: ['Mobile', 'OCR', 'File generation'],
   website: 'https://github.com/ianwanjohi475/word',
+  // Android build. Point this at your APK once it's uploaded to a GitHub
+  // Release (github.com/ianwanjohi475/word/releases). "latest" always
+  // resolves to your newest release.
+  apk: 'https://github.com/ianwanjohi475/word/releases/latest',
   overview: [
     'Converta takes a photo, a scan or a PDF and turns it into an editable file. You can pick a document, let it read the text and layout, then export it as Word, Excel, PDF or plain text.',
     'It runs on the phone, so there is no account and nothing is sent to a server of mine. If needed it reads text locally, and it keeps your files and history on the device.',
