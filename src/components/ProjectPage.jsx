@@ -41,8 +41,16 @@ export default function ProjectPage({ id }) {
           <Meta label="Client">{p.client}</Meta>
           <Meta label="Year">{p.year}</Meta>
           <Meta label="Role">{p.role}</Meta>
-          <Meta label="Website">
-            <a href={p.website} target="_blank" rel="noreferrer noopener" className="rust-link" data-cursor>Visit ↗</a>
+          <Meta label={p.inProgress ? 'Status' : 'Website'}>
+            {p.inProgress ? (
+              <span className="inline-flex items-center gap-2 text-rust">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-rust" /> In progress
+              </span>
+            ) : p.website ? (
+              <a href={p.website} target="_blank" rel="noreferrer noopener" className="rust-link" data-cursor>Visit ↗</a>
+            ) : (
+              <span className="text-muted">—</span>
+            )}
           </Meta>
         </Reveal>
       </header>

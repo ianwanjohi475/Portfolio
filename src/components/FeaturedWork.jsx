@@ -57,6 +57,11 @@ export default function FeaturedWork() {
             className={`group relative w-[85%] shrink-0 snap-center rounded-3xl border-2 border-border bg-card p-3 transition-transform duration-300 sm:w-[62%] lg:w-[46%] ${i % 2 ? 'rotate-[0.6deg]' : '-rotate-[0.6deg]'} hover:!rotate-0`}
             style={{ boxShadow: '6px 8px 0 -1px rgb(var(--border) / 0.9)' }}
           >
+            {p.inProgress && (
+              <span className="pointer-events-none absolute left-5 top-5 z-10 inline-flex items-center gap-1.5 rounded-full bg-rust px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-white shadow-lg">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" /> In progress
+              </span>
+            )}
             {p.type === 'mobile' ? (
               /* Mobile app — phone mockup on a soft backdrop */
               <div className="relative flex aspect-[16/10] items-end justify-center overflow-hidden rounded-2xl border border-border/60 bg-gradient-to-b from-fg/[0.05] to-fg/[0.12]">

@@ -3,7 +3,7 @@ export const site = {
   name: 'Ian Wanjohi',
   role: 'Fullstack Developer',
   location: 'Nairobi, Kenya',
-  email: 'hello@ianwanjohi.dev',
+  email: 'ianwanjohi475@gmail.com',
   phone: '+254 758 950 370',
   // WhatsApp: international format, digits only (0758950370 -> 254758950370)
   whatsapp: '254758950370',
@@ -12,7 +12,7 @@ export const site = {
   photo: '/img/ian.jpg', // your headshot — replace this file in /public/img
   socials: {
     github: 'https://github.com/ianwanjohi475',
-    linkedin: 'https://www.linkedin.com/in/ianwanjohi',
+    linkedin: 'https://www.linkedin.com/in/ian-wanjohi-4556322b9/',
     x: 'https://x.com',
   },
 };

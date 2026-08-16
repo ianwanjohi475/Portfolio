@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { ThemeGlyph } from './ThemeToggle.jsx';
 import { site, waLink } from '../data/site.js';
-import { DownloadIcon } from './icons.jsx';
+import { DownloadIcon, MailIcon, PhoneIcon } from './icons.jsx';
+
+const telHref = `tel:${site.phone.replace(/[^\d+]/g, '')}`;
 
 const links = [
   { href: '#work', label: 'Work' },
@@ -34,6 +36,20 @@ export default function Navbar() {
 
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${scrolled ? 'border-b border-border/15 bg-bg/80 backdrop-blur-md' : ''}`}>
+      {/* top contact ribbon — email + phone */}
+      <div className="bg-fg text-bg">
+        <div className="container-x flex items-center justify-between gap-4 py-1.5 font-mono text-[11px] sm:text-xs">
+          <a href={`mailto:${site.email}`} className="inline-flex min-w-0 items-center gap-1.5 transition-colors hover:text-rust" data-cursor>
+            <MailIcon className="shrink-0" />
+            <span className="truncate">{site.email}</span>
+          </a>
+          <a href={telHref} className="inline-flex shrink-0 items-center gap-1.5 transition-colors hover:text-rust" data-cursor>
+            <PhoneIcon className="shrink-0" />
+            <span>{site.phone}</span>
+          </a>
+        </div>
+      </div>
+
       <nav className="container-x flex items-center justify-between py-4" aria-label="Primary">
         <a href="#hero" className="font-display text-2xl font-bold tracking-tight" aria-label={`${site.name} — home`} data-cursor>
           IW<span className="text-rust">.</span>

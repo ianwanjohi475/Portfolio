@@ -1,7 +1,7 @@
 // Real projects. Card images are tall full-page shots so they can "scroll"
 // on hover. Replace the files in /public/img/projects with real screenshots
 // any time (keep the same paths).
-export const categories = ['All', 'Mobile App', 'Web App', 'Company', 'Real Estate'];
+export const categories = ['All', 'Online Store', 'Mobile App', 'Web App', 'Company', 'Real Estate'];
 
 export const projects = [
   {
@@ -90,6 +90,35 @@ projects.unshift({
   ],
   live: 'https://github.com/ianwanjohi475/word',
   repo: 'https://github.com/ianwanjohi475/word',
+  featured: true,
+});
+
+// Sir Vert — an online store I'm currently building for Oraimo accessories.
+// Still a work in progress, so no live link and no repo link are shown.
+projects.unshift({
+  id: 'sir-vert',
+  year: '2026',
+  title: 'Sir Vert',
+  subtitle: 'An online store for Oraimo smart accessories.',
+  category: 'Online Store',
+  inProgress: true,
+  description:
+    'An online store for Oraimo smart accessories. It is still a work in progress.',
+  tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'E-commerce'],
+  image: '/img/projects/sirvert-home.jpg', // tall home page — scrolls on hover
+  gallery: [
+    '/img/projects/sirvert-shop.jpg',
+    '/img/projects/sirvert-product.jpg',
+    '/img/projects/sirvert-categories.jpg',
+  ],
+  client: 'Personal project',
+  role: 'Solo — design & build',
+  services: ['Next.js', 'Tailwind CSS', 'Frontend', 'UI'],
+  overview: [
+    'Sir Vert is an online store I am building for Oraimo smart accessories like earbuds, smartwatches, power banks and chargers. It is still a work in progress, so I keep adding to it.',
+    'I designed the whole look and built the front end. It has a full shop with search, filters and sorting, product pages with a gallery and reviews, a cart and a checkout flow, plus flash sales with countdowns, a wishlist, and light and dark mode.',
+    'I built it with Next.js and Tailwind CSS. There is still more to come, so the store will keep growing over time.',
+  ],
   featured: true,
 });
 
