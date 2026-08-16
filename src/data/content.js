@@ -38,6 +38,7 @@ export const tools = [
   'Canva',
   'Adobe Photoshop',
   'Adobe Illustrator',
+  'Adobe After Effects',
 ];
 
 // Marquee ribbon text (no experience claims).

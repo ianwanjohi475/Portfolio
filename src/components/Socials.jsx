@@ -1,11 +1,12 @@
 import { site } from '../data/site.js';
-import { GitHubIcon, LinkedInIcon, XIcon, WhatsAppIcon } from './icons.jsx';
+import { GitHubIcon, LinkedInIcon, XIcon, InstagramIcon, WhatsAppIcon } from './icons.jsx';
 import { waLink } from '../data/site.js';
 
 const items = [
   { key: 'github', label: 'GitHub', href: site.socials.github, Icon: GitHubIcon },
   { key: 'linkedin', label: 'LinkedIn', href: site.socials.linkedin, Icon: LinkedInIcon },
   { key: 'x', label: 'X (Twitter)', href: site.socials.x, Icon: XIcon },
+  { key: 'instagram', label: 'Instagram', href: site.socials.instagram, Icon: InstagramIcon },
   { key: 'whatsapp', label: 'WhatsApp', href: waLink(), Icon: WhatsAppIcon },
 ];
 

@@ -13,7 +13,8 @@ export const site = {
   socials: {
     github: 'https://github.com/ianwanjohi475',
     linkedin: 'https://www.linkedin.com/in/ian-wanjohi-4556322b9/',
-    x: 'https://x.com',
+    x: 'https://x.com/ianspark002',
+    instagram: 'https://www.instagram.com/ianwanjohi2/',
   },
 };
 

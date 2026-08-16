@@ -2,12 +2,13 @@ import { useEffect, useRef } from 'react';
 import { gsap } from '../lib/gsap.js';
 import MagneticButton from './MagneticButton.jsx';
 import { site } from '../data/site.js';
-import { GitHubIcon, LinkedInIcon, XIcon } from './icons.jsx';
+import { GitHubIcon, LinkedInIcon, XIcon, InstagramIcon } from './icons.jsx';
 
 const socials = [
   { href: site.socials.github, label: 'GitHub', Icon: GitHubIcon },
   { href: site.socials.linkedin, label: 'LinkedIn', Icon: LinkedInIcon },
   { href: site.socials.x, label: 'X', Icon: XIcon },
+  { href: site.socials.instagram, label: 'Instagram', Icon: InstagramIcon },
 ];
 
 const lines = ["I'm Ian"];
@@ -42,7 +43,7 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="container-x grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="container-x grid items-center gap-12 lg:grid-cols-[1.35fr_0.65fr]">
         {/* text */}
         <div>
           <p className="hero-fade eyebrow">{site.role} · {site.location}</p>
@@ -61,8 +62,7 @@ export default function Hero() {
             A fullstack developer who builds web and mobile apps.
           </p>
           <p className="hero-fade mt-5 max-w-md text-lg text-muted">
-            I enjoy turning ideas into things people can actually use, and I work
-            on both the design and the code.
+            I work on both the design and the code.
           </p>
 
           <div className="hero-fade mt-9 flex flex-wrap items-center gap-4">
@@ -72,7 +72,7 @@ export default function Hero() {
         </div>
 
         {/* slanted, elevated photo card */}
-        <div className="hero-card relative mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-none lg:justify-self-end">
+        <div className="hero-card relative mx-auto w-full max-w-[15rem] sm:max-w-xs lg:justify-self-end">
           <div
             className="relative rotate-[3deg] rounded-[1.75rem] border-2 border-border bg-card p-3 transition-transform duration-500 hover:rotate-0"
             style={{ boxShadow: '12px 14px 0 -1px rgb(var(--border) / 0.9)' }}

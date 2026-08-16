@@ -105,11 +105,11 @@ projects.unshift({
   description:
     'An online store for Oraimo smart accessories. It is still a work in progress.',
   tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'E-commerce'],
-  image: '/img/projects/sirvert-home.jpg', // tall home page — scrolls on hover
+  image: '/img/projects/sirvert-shop.jpg', // product grid — scrolls on hover
   gallery: [
-    '/img/projects/sirvert-shop.jpg',
+    '/img/projects/sirvert-home.jpg',
+    '/img/projects/sirvert-flash.jpg',
     '/img/projects/sirvert-product.jpg',
-    '/img/projects/sirvert-categories.jpg',
   ],
   client: 'Personal project',
   role: 'Solo — design & build',
